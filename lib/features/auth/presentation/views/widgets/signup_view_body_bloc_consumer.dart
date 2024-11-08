@@ -4,6 +4,7 @@ import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/features/auth/presentation/views/widgets/sign_up_view_body.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../../../core/utilis/app_colors.dart';
 import '../../../../../core/widgets/custom_snack_bar.dart';
 import '../../signup_cubit/signup_cubit.dart';
 
@@ -20,7 +21,8 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
           customSnackBar(context, state.message);
         }
          if(state is SignupSuccess){
-           customSnackBar(context, AppString.success);
+           customSnackBar(context, AppString.creatAccSuccess,iconMsg: Icons.check_circle_outline,iconColor: AppColors.primaryColor);
+           Navigator.pop(context);
            // Navigate to home page
            //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
          }

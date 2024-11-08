@@ -39,15 +39,18 @@ class FirebaseAuthServices{
      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
      return credential.user!;
    } on FirebaseException catch (e){
-     log('Exception in FirebaseAuthServices.sign in with email and password :${e.toString()}');
+     log('Exception in FirebaseAuthServices.sign in with email and password :${e.toString()}and code is ${e.code}');
      if(e.code == 'network-request-failed'){
        throw CustomException(message: AppString.networkExc);
      }
-     if(e.code == 'user-not-found'){
+     else if(e.code == 'user-not-found'){
        throw CustomException(message: AppString.invalidEmailOrPass);
      }
-     if(e.code == 'wrong-password'){
-       throw CustomException(message: AppString.passwordException);
+     else if(e.code == 'user-not-found'){
+       throw CustomException(message: AppString.invalidEmailOrPass);
+     }
+     else if(e.code == 'invalid-credential'){
+       throw CustomException(message: AppString.invalidEmailOrPass);
      }
      else{
        throw CustomException(message: AppString.otherException);
@@ -82,5 +85,8 @@ class FirebaseAuthServices{
 
    // Once signed in, return the UserCredential
    return (await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential)).user!;
+ }
+ Future<void>deleteUser()async{
+   await FirebaseAuth.instance.currentUser!.delete();
  }
 }

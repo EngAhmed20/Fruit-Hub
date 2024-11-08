@@ -22,6 +22,7 @@ class AppString{
   static const emailException="البريد الالكتروني مستخدم بالفعل";
   static const otherException="لقد حدث خطأ ما ,الرجاء المحاولة مرة اخري";
   static const String success="تم تسجيل الدخول بنجاح";
+  static const String creatAccSuccess="تم إنشاء حساب جديد بنجاح";
   static const confirmRules="يجب الموافقة علي الشروط والأحكام";
   static const String networkExc="تأكد من اتصالك بالأنترنت";
   static const String invalidEmailOrPass="البريد الالكتروني او كلمة السر غير صحيح";

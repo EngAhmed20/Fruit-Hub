@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
       AppLocalizationsSetup.localeResolutionCallback,
       localizationsDelegates:
       AppLocalizationsSetup.localizationsDelegates,
-      locale: const Locale('ar'),
+      locale: const Locale('en'),
       initialRoute: SplashView.routeName,
       debugShowCheckedModeBanner: false,
 

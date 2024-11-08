@@ -110,7 +110,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 height: 30,
               ),
               OrDivider(),
-              MySizedBox(height: 16),
+              MySizedBox(height: 30),
               CustomLoginIcon(
                 icon: SvgPicture.asset(Assets.facebookLogo),
                 text: AppString.loginWithFacebook,
@@ -131,13 +131,13 @@ class _LoginViewBodyState extends State<LoginViewBody> {
 
               ),
               MySizedBox(height: 15),
-              CustomLoginIcon(
+              /*CustomLoginIcon(
                 icon: SvgPicture.asset(Assets.appleLogo),
                 text: AppString.loginWithApple,
                 onPressed: (){
                 },
 
-              ),
+              ),*/
             ],
           ),
         ),

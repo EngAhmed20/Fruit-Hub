@@ -16,19 +16,20 @@ class HaveOrNotHaveAcc extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(text1,
-            style: textStyle.semiBold16.copyWith(
-              color: Colors.black.withOpacity(0.5),
-            )),
-        MySizedBox(
-          width: 5,
-        ),
         InkWell(
           onTap:onTap,
           child: Text(text2,
               style: textStyle.semiBold16.copyWith(
                 color: AppColors.primaryColor,
               )),
+        ),
+
+        Text(text1,
+            style: textStyle.semiBold16.copyWith(
+              color: Colors.black.withOpacity(0.5),
+            )),
+        MySizedBox(
+          width: 5,
         ),
       ],
     );
