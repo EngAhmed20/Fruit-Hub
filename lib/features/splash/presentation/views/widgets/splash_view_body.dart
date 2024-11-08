@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_app/core/services/shared_prefrences.dart';
 import 'package:fruits_app/features/on_boarding/presentaion/views/on_boarding_view.dart';
-
 import '../../../../../constant.dart';
 import '../../../../../core/utilis/app_images.dart';
 import '../../../../auth/presentation/views/login_view.dart';

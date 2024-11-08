@@ -3,6 +3,7 @@ class Assets {
   Assets._();
 
   static const String assetsImagesAppleIcon = 'assets/images/apple-icon.svg';
+  static const String assetsImagesCheck = 'assets/images/Check.svg';
   static const String assetsImagesFacebookIcon = 'assets/images/facebook-icon.svg';
   static const String assetsImagesGoogleIcon = 'assets/images/google-icon.svg';
   static const String fontsCairoBold = 'assets/fonts/Cairo-Bold.ttf';
@@ -15,11 +16,13 @@ class Assets {
   static const String imagesFacebookIcon = 'assets/images/facebook-icon.svg';
   static const String imagesGoogleIcon = 'assets/images/google-icon.svg';
   static const String imagesLogo = 'assets/images/logo.svg';
+  static const String imagesMaskgroup = 'assets/images/Maskgroup.svg';
   static const String imagesPageViewBackGround1 = 'assets/images/pageViewBackGround1.svg';
   static const String imagesPageViewBackGround2 = 'assets/images/pageViewBackGround2.svg';
   static const String imagesPageViewImg1 = 'assets/images/pageViewImg1.svg';
   static const String imagesPageViewImg2 = 'assets/images/pageViewImg2.svg';
   static const String imagesPlant = 'assets/images/plant.svg';
+  static const String imagesProfilePic = 'assets/images/profilePic.svg';
   static const String imagesSplashBottom = 'assets/images/splash_bottom.svg';
   static const String langAr = 'lang/ar.json';
   static const String langEn = 'lang/en.json';

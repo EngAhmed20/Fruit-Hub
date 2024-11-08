@@ -14,5 +14,15 @@ class Assets {
   static const String facebookLogo = 'assets/images/facebook-icon.svg';
   static const String appleLogo = 'assets/images/apple-icon.svg';
   static const String checkIcon = 'assets/images/Check.svg';
+  static const String assetsImagesAppleIcon = 'assets/images/apple-icon.svg';
+  static const String assetsImagesCheck = 'assets/images/Check.svg';
+  static const String assetsImagesFacebookIcon = 'assets/images/facebook-icon.svg';
+  static const String assetsImagesGoogleIcon = 'assets/images/google-icon.svg';
+  static const String imagesAppleIcon = 'assets/images/apple-icon.svg';
+  static const String imagesCheck = 'assets/images/Check.svg';
+  static const String imagesFacebookIcon = 'assets/images/facebook-icon.svg';
+  static const String imagesGoogleIcon = 'assets/images/google-icon.svg';
+  static const String imagesProfilePic = 'assets/images/Maskgroup.svg';
+
 
 }
