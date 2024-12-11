@@ -1,17 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_app/core/utilis/app_colors.dart';
 import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/core/utilis/sized_box.dart';
 import 'package:fruits_app/features/auth/presentation/login_cubit/login_cubit.dart';
 import 'package:fruits_app/features/auth/presentation/views/sign_up_view.dart';
-import '../../../../../core/utilis/app_images.dart';
-import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/custom_button.dart';
+import '../../../../../generated/assets.dart';
 import 'have_not_acc.dart';
 import 'or_divider.dart';
 import '../../../../../core/widgets/text_form_filed.dart';
@@ -112,7 +108,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               OrDivider(),
               MySizedBox(height: 30),
               CustomLoginIcon(
-                icon: SvgPicture.asset(Assets.facebookLogo),
+                icon: SvgPicture.asset(Assets.imagesFacebookIcon),
                 text: AppString.loginWithFacebook,
                 onPressed: ()async {
                   await loginCubit.get(context).loginWithFacebook();
@@ -122,7 +118,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               MySizedBox(height: 15),
               CustomLoginIcon(
                 icon: SvgPicture.asset(
-                  Assets.googleLogo,
+                  Assets.imagesGoogleIcon,
                 ),
                 text: AppString.loginWithGoogle,
                 onPressed: ()async{

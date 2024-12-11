@@ -26,5 +26,34 @@ class AppString{
   static const confirmRules="يجب الموافقة علي الشروط والأحكام";
   static const String networkExc="تأكد من اتصالك بالأنترنت";
   static const String invalidEmailOrPass="البريد الالكتروني او كلمة السر غير صحيح";
+  static const String homeAppBarTitle='صباح الخير..!';
+  static const String hintSearch='ابحث عن.......';
+  static const String featuredItemTitle='عروض العيد';
+  static const String featuredItemSubTitle='خصم 25%';
+  static const String featuredItemButton='تسوق الان';
+  static const String bestSellerTitle='الأكثر مبيعًا';
+  static const String more='المزيد';
+  static const String waterMellon='بطيخ';
+  static const String waterMellonPrice='20جنية';
+  static const String Quantity='كيلو';
+  static const String home='الرئيسية';
+  static const String product='المنتجات';
+  static const String cart='سلة التسوق';
+  static const String user='حسابي';
+  static const String search='بحث';
+  static const String addToCart='أضف الى السلة';
+  static const String remove='��زالة';
+  static const String logout='تسجيل الخروج';
+  static const String about='معلومات عنا';
+  static const String contact='اتصل بنا';
+  static const String share='شارك';
+  static const String cartEmpty='سلة التسوق فارغة';
+  static const String total='المجموع';
+  static const String pay='ادفع';
+  static const String payment='الدفع';
+  static const String paymentMethod='طريقة الدفع';
+  static const String payPal='باي بال';
+  static const String card='بطاقة';
+  static const String getDataError='حدثت مشكلة اثناء جلب المعلومات الرجاء المحاولة مرة اخري';
 
 }

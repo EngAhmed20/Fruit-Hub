@@ -89,4 +89,7 @@ class FirebaseAuthServices{
  Future<void>deleteUser()async{
    await FirebaseAuth.instance.currentUser!.delete();
  }
+ bool isUserLoggedIn(){
+   return  FirebaseAuth.instance.currentUser!= null;
+ }
 }

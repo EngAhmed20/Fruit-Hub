@@ -3,7 +3,8 @@ import 'package:fruits_app/core/utilis/app_colors.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/features/on_boarding/presentaion/views/widgets/page_view_item.dart';
 
-import '../../../../../core/utilis/app_images.dart';
+import '../../../../../generated/assets.dart';
+
 
 class OnBoardingPageView extends StatelessWidget {
   const OnBoardingPageView({ required this.pageController});

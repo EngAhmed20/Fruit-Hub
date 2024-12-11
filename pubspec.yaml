@@ -27,6 +27,10 @@ dependencies:
   google_sign_in: ^6.2.1
   flutter_facebook_auth: ^7.0.1
   cloud_firestore: ^5.4.4
+  flutter_svg_provider: ^1.0.7
+  skeletonizer: ^1.4.2
+
+
 
 
 

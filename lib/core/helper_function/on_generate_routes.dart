@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
 import 'package:fruits_app/features/auth/presentation/views/sign_up_view.dart';
-import 'package:fruits_app/features/home/presentation/views/home_view.dart';
+import 'package:fruits_app/features/best_selling/presentation/views/best_selling_view.dart';
+import 'package:fruits_app/features/home/presentation/views/main_view.dart';
 import 'package:fruits_app/features/splash/presentation/views/splash_view.dart';
 
 import '../../features/on_boarding/presentaion/views/on_boarding_view.dart';
@@ -16,10 +17,10 @@ Route<dynamic> onGenrateRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (_) => LoginView());
     case SignUpView.routeName:
       return MaterialPageRoute(builder: (_) => SignUpView());
-    case HomeView.routeName:
+    case MainView.routeName:
      return  PageRouteBuilder(
        settings: settings,
-       pageBuilder: (context, animation, secondaryAnimation) => HomeView(),
+       pageBuilder: (context, animation, secondaryAnimation) => MainView(),
        transitionsBuilder: (context, animation, secondaryAnimation, child) {
          const begin = Offset(0.0, 1.0); // الحركة من الأسفل للأعلى
          const end = Offset.zero;
@@ -33,7 +34,10 @@ Route<dynamic> onGenrateRoute(RouteSettings settings){
            child: child,
          );
        },
-     );;
+     );
+    case BestSellingView.routeName:
+      return MaterialPageRoute(builder: (_) => BestSellingView());
+    // Add more routes here
     default:
       return MaterialPageRoute(builder: (_) => Scaffold());
 

@@ -8,7 +8,15 @@ abstract class textStyle{
   static const TextStyle regular13=TextStyle(
     fontWeight:  FontWeight.normal,
     fontSize: 13,
-  );  static const TextStyle Bold16=TextStyle(
+  );static const TextStyle regular19=TextStyle(
+    fontWeight:  FontWeight.normal,
+    fontSize: 19,
+  );
+  static const TextStyle Bold13=TextStyle(
+    fontWeight:  FontWeight.bold,
+    fontSize: 13,
+  );
+  static const TextStyle Bold16=TextStyle(
     fontWeight:  FontWeight.bold,
     fontSize: 16,
   );

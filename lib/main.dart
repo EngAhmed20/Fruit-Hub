@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'cairo',
         useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white
       ),
      onGenerateRoute: onGenrateRoute,
       supportedLocales: AppLocalizationsSetup.supportedLocales,
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       AppLocalizationsSetup.localeResolutionCallback,
       localizationsDelegates:
       AppLocalizationsSetup.localizationsDelegates,
-      locale: const Locale('en'),
+      locale: const Locale('ar'),
       initialRoute: SplashView.routeName,
       debugShowCheckedModeBanner: false,
 
