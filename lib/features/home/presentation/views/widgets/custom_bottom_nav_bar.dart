@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruits_app/features/home/domain/entities/bottom_nav_bar_entity.dart';
-
-import '../../../../../generated/assets.dart';
 import 'navigate_bottom_bar_item.dart';
-
 class CustomBottomNavBar extends StatefulWidget {
-  const CustomBottomNavBar({super.key});
+  const CustomBottomNavBar({super.key, required this.onIndexChanged});
+  final Function(int)onIndexChanged;
+
 
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
@@ -47,6 +45,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                 onTap: (){
                   setState(() {
                     selectedIndex=index;
+                    widget.onIndexChanged(index);
                   });
                 },
                 child: NavBottomBarItem(isSelected: index==selectedIndex, entity: entity)),
