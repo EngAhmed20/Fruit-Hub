@@ -18,11 +18,11 @@ class loginViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<loginCubit,loginState>(
         listener: (context,state){
           if(state is loginFailure){
-            return customSnackBar(context, state.errorMessage);
+            return customSnackBar(context: context,msg:state.errorMessage);
           }
           if(state is loginSuccess) {
              customSnackBar(
-                context, AppString.success, iconMsg: Icons.check_circle_outline,
+                context: context,msg:  AppString.success, iconMsg: Icons.check_circle_outline,
                 iconColor: AppColors.primaryColor);
              Future.delayed(const Duration(seconds: 2),(){
                Navigator.pushReplacementNamed(context, MainView.routeName);

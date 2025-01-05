@@ -12,6 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  #win32: ^5.0.0 # Or a compatible version for your Dart SDK
   flutter_svg: ^2.0.10+1
   flutter_localization:
   cupertino_icons: ^1.0.6
@@ -29,6 +30,8 @@ dependencies:
   cloud_firestore: ^5.4.4
   flutter_svg_provider: ^1.0.7
   skeletonizer: ^1.4.2
+  equatable: ^2.0.7
+
 
 
 

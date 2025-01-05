@@ -93,7 +93,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                           password: passController.text,
                           name: nameController.text);
                     }else{
-                      customSnackBar(context, AppString.confirmRules);
+                      customSnackBar(context: context,msg:  AppString.confirmRules);
                     }
                   } else {
                     setState(() {

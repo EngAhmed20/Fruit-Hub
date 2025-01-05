@@ -9,6 +9,8 @@ class AppString{
   static const String createAcc="قم بإنشاء حساب";
   static const String forgetPass="هل نسيت كلمة السر؟";
   static const String or="أو";
+  static const String cartHeader1="لديك";
+  static const String cartHeader2="منتجات في السلة";
   static const String loginWithGoogle="تسجيل الدخول بواسطة جوجل";
   static const String loginWithFacebook="تسجيل الدخول بواسطة فيس بوك";
   static const String loginWithApple="تسجيل الدخول بواسطة أبل";
@@ -32,12 +34,14 @@ class AppString{
   static const String featuredItemSubTitle='خصم 25%';
   static const String featuredItemButton='تسوق الان';
   static const String bestSellerTitle='الأكثر مبيعًا';
+  static const String productsHeader='نتائج';
   static const String more='المزيد';
   static const String waterMellon='بطيخ';
   static const String waterMellonPrice='20جنية';
   static const String Quantity='كيلو';
   static const String home='الرئيسية';
-  static const String product='المنتجات';
+  static const String productTitle='المنتجات';
+  static const String cartTitle='السلة';
   static const String cart='سلة التسوق';
   static const String user='حسابي';
   static const String search='بحث';
@@ -55,5 +59,7 @@ class AppString{
   static const String payPal='باي بال';
   static const String card='بطاقة';
   static const String getDataError='حدثت مشكلة اثناء جلب المعلومات الرجاء المحاولة مرة اخري';
+  static const String addToCartSuccess='تمت إضافة المنتج إلى السلة';
+  static const String removeFromCartSuccess='تمت إزالة المنتج من السلة';
 
 }

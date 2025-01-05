@@ -9,7 +9,7 @@ class BottomNavBarEntity{
 }
 List<BottomNavBarEntity>BottomNavBarEntityList=[
   BottomNavBarEntity(activeImg: Assets.imagesActiveHome, inactiveImg: Assets.imagesHome, title: AppString.home),
-  BottomNavBarEntity(activeImg: Assets.imagesActiveProducts, inactiveImg:Assets.imagesProduct, title:AppString.product),
+  BottomNavBarEntity(activeImg: Assets.imagesActiveProducts, inactiveImg:Assets.imagesProduct, title:AppString.productTitle),
   BottomNavBarEntity(activeImg: Assets.imagesActiveShoppingCart, inactiveImg:Assets.imagesShoppingCart, title:AppString.cart),
   BottomNavBarEntity(activeImg: Assets.imagesActiveUser, inactiveImg:Assets.imagesUser, title:AppString.user)
 

@@ -18,10 +18,10 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
     return BlocConsumer<SignupCubit,SignupState>(
       listener: (context,state){
         if(state is SignupFailure) {
-          customSnackBar(context, state.message);
+          customSnackBar(context: context, msg:state.message);
         }
          if(state is SignupSuccess){
-           customSnackBar(context, AppString.creatAccSuccess,iconMsg: Icons.check_circle_outline,iconColor: AppColors.primaryColor);
+           customSnackBar(context: context,msg:  AppString.creatAccSuccess,iconMsg: Icons.check_circle_outline,iconColor: AppColors.primaryColor);
            Navigator.pop(context);
            // Navigate to home page
            //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));

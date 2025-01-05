@@ -31,10 +31,12 @@ class Assets {
   static const String imagesPageViewImg2 = 'assets/images/pageViewImg2.svg';
   static const String imagesPlant = 'assets/images/plant.svg';
   static const String imagesProduct = 'assets/images/product.svg';
+  static const String imagesProductFilter = 'assets/images/product_filter.svg';
   static const String imagesProfilePic = 'assets/images/profile_pic.png';
   static const String imagesSearchNormal = 'assets/images/search-normal.svg';
   static const String imagesShoppingCart = 'assets/images/shopping-cart.svg';
   static const String imagesSplashBottom = 'assets/images/splash_bottom.svg';
+  static const String imagesTrash = 'assets/images/trash.svg';
   static const String imagesUser = 'assets/images/user.svg';
   static const String imagesVector = 'assets/images/Vector.svg';
   static const String imagesWatermelonTest = 'assets/images/watermelon-test.png';

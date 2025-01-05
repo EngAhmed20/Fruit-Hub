@@ -7,8 +7,8 @@ import '../../../../../core/helper_function/dummy_product_entity.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
 import 'fruit_item_grid_view.dart';
 
-class BestSellingGridViewBlocBuilder extends StatelessWidget {
-  const BestSellingGridViewBlocBuilder({super.key});
+class ProductsGridViewBlocBuilder extends StatelessWidget {
+  const ProductsGridViewBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {

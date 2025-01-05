@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/entities/product_entity.dart';
 import 'package:fruits_app/core/utilis/app_colors.dart';
 import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
+import 'package:fruits_app/features/cart/presentation/manager/cubit/cart_cubit.dart';
 
 import '../../generated/assets.dart';
 
@@ -38,9 +40,14 @@ class FruitItem extends StatelessWidget {
                     TextSpan(text: AppString.Quantity,style: textStyle.Bold13.copyWith(color: AppColors.lightSecondartColor))
                   ]
                 )),
-                trailing: CircleAvatar(
-                  backgroundColor: AppColors.primaryColor,
-                  child: Icon(Icons.add,color: Colors.white,),
+                trailing: GestureDetector(
+                  onTap: (){
+                    context.read<CartCubit>().addCartItem(productEntity);
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: AppColors.primaryColor,
+                    child: Icon(Icons.add,color: Colors.white,),
+                  ),
                 ),
               ),
 

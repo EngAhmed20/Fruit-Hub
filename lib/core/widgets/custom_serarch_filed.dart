@@ -10,18 +10,18 @@ import '../../generated/assets.dart';
 Widget searchTextFiled(
     ) =>
     Container(
-      decoration: const BoxDecoration(
+decoration: const BoxDecoration(
         boxShadow: [
          BoxShadow(
            color: AppColors.primaryColor,
-           offset: Offset(0, 5),
-           blurRadius: 5,
+           offset: Offset(0, 3),
+           blurRadius: 3,
            spreadRadius:0,
          ),
           BoxShadow(
             color: AppColors.lightPrimaryColor,
-            offset: Offset(5,0),
-            blurRadius: 5,
+            offset: Offset(3,0),
+            blurRadius: 3,
             spreadRadius:0,
           )
 

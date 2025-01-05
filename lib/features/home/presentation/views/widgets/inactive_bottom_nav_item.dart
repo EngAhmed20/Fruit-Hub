@@ -7,7 +7,9 @@ class InactiveBottomNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(inactiveImg,width: 30,);
+    return Container(
+        color: Colors.transparent,
+        child: SvgPicture.asset(inactiveImg,width: 30,));
   }
 
 }
