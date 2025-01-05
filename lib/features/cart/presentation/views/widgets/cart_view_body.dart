@@ -15,7 +15,7 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cartCubit=context.watch()<CartCubit>();
+    CartCubit cartCubit=context.watch<CartCubit>();
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Stack(
@@ -34,7 +34,7 @@ class CartViewBody extends StatelessWidget {
               SliverToBoxAdapter(
                 child: CustomDivider(),
               ),
-              CartItemsList(cartItems: cartCubit.cartEntities.cartItems,),
+              CartItemsList(cartItems:cartCubit.cartEntities.cartItems,),
               SliverToBoxAdapter(
                 child: CustomDivider(),
               ),
