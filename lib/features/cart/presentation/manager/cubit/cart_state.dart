@@ -6,3 +6,7 @@ abstract class CartState {}
 class CartInitial extends CartState {}
   class CartItemAdded extends CartState{}
 class CartItemRemoved extends CartState {}
+class CartItemUpdated extends CartState {
+  final CartItemEntity cartItemEntity;
+  CartItemUpdated(this.cartItemEntity);
+}

@@ -6,7 +6,6 @@ import 'package:fruits_app/core/utilis/app_colors.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:fruits_app/features/cart/presentation/manager/cubit/cart_cubit.dart';
-import 'package:fruits_app/features/cart/presentation/manager/update_item_cubit/update_item_cubit.dart';
 
 import '../../../../../generated/assets.dart';
 import 'cart_item_action_button.dart';
@@ -20,7 +19,7 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UpdateItemCubit, UpdateItemState>(
+    return BlocBuilder<CartCubit, CartState>(
         buildWhen: (prev,current) {
       if (current is CartItemUpdated) {
         if (current.cartItemEntity == cartItemEntity) {
@@ -79,7 +78,7 @@ class CartItem extends StatelessWidget {
                         color: Colors.white,
                         backgroundColor: AppColors.primaryColor,
                         onTap: () {
-                          context.read<UpdateItemCubit>().updateCartItemCount(
+                          context.read<CartCubit>().updateCartItemCount(
                               cartItemEntity,
                               increment: true);
                         },
@@ -96,7 +95,7 @@ class CartItem extends StatelessWidget {
                           color: Colors.grey,
                           backgroundColor: Colors.transparent,
                           onTap: () {
-                            context.read<UpdateItemCubit>().updateCartItemCount(
+                            context.read<CartCubit>().updateCartItemCount(
                                 cartItemEntity,
                                 increment: false);
                           }),

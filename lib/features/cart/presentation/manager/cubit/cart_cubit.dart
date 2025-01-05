@@ -27,5 +27,14 @@ class CartCubit extends Cubit<CartState> {
     cartEntities.removeCartItem(cartItem);
     emit(CartItemRemoved());
   }
+  void updateCartItemCount(CartItemEntity cartItem,{required bool increment}){
+    if(increment==true){
+      cartItem.increaseCount();
+    }
+    else{
+      cartItem.decreaseCount();
+    }
+    emit(CartItemUpdated(cartItem));
+  }
 
 }
