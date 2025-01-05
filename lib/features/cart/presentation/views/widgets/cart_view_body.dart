@@ -4,6 +4,7 @@ import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/core/widgets/custom_button.dart';
 import 'package:fruits_app/core/widgets/custom_divider.dart';
 import 'package:fruits_app/features/cart/presentation/manager/cubit/cart_cubit.dart';
+import 'package:fruits_app/features/cart/presentation/manager/update_item_cubit/update_item_cubit.dart';
 import 'package:fruits_app/features/cart/presentation/views/widgets/cart_items_list.dart';
 import '../../../../../constant.dart';
 import '../../../../../core/utilis/app_string.dart';
@@ -44,10 +45,27 @@ class CartViewBody extends StatelessWidget {
               bottom: MediaQuery.of(context).size.height*.04,
               left: 0,
               right: 0,
-              child: CustomButton(text: '${AppString.payment}  ${cartCubit.cartEntities.calculateTotalPrice()} ${AppString.currency}',textStyle: textStyle.Bold16.copyWith(color: Colors.white), onPressed:(){})),
+              child: CustomCartButton()),
         ],
       )
     );
 
+  }
+}
+
+class CustomCartButton extends StatelessWidget {
+  const CustomCartButton({
+    super.key,
+
+  });
+
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<UpdateItemCubit,UpdateItemState>(
+    builder: (context,state){
+      return CustomButton(text: '${AppString.payment}  ${context.read<CartCubit>().cartEntities.calculateTotalPrice()} ${AppString.currency}',textStyle: textStyle.Bold16.copyWith(color: Colors.white), onPressed:(){});
+    },
+    );
   }
 }
