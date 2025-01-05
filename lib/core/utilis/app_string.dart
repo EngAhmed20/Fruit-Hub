@@ -55,6 +55,7 @@ class AppString{
   static const String total='المجموع';
   static const String pay='ادفع';
   static const String payment='الدفع';
+  static const String currency='جنيه';
   static const String paymentMethod='طريقة الدفع';
   static const String payPal='باي بال';
   static const String card='بطاقة';

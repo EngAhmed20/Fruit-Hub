@@ -44,7 +44,7 @@ class CartViewBody extends StatelessWidget {
               bottom: MediaQuery.of(context).size.height*.04,
               left: 0,
               right: 0,
-              child: CustomButton(text: 'الدفع  ${cartCubit.cartEntities.calculateTotalPrice()} جنيه',textStyle: textStyle.Bold16.copyWith(color: Colors.white), onPressed:(){})),
+              child: CustomButton(text: '${AppString.payment}  ${cartCubit.cartEntities.calculateTotalPrice()} ${AppString.currency}',textStyle: textStyle.Bold16.copyWith(color: Colors.white), onPressed:(){})),
         ],
       )
     );
