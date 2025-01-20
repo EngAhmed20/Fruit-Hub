@@ -60,8 +60,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   },
                   hint: AppString.password,
                   ispass: loginCubit.get(context).isHidePass,
-                  sufixpress: (){loginCubit.get(context).changeVisablity();},
-                  suficon:loginCubit.get(context).sufIcon),
+                  suffixPress: (){loginCubit.get(context).changeVisablity();},
+                  suffixIcon:loginCubit.get(context).sufIcon),
               MySizedBox(
                 height: 20,
               ),

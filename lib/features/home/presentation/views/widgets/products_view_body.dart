@@ -21,8 +21,7 @@ class ProductsViewBody extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(child: Column(
             children: [
-              const SizedBox(height: KVerticalPadding,),
-              CustomAppBar(title: AppString.productTitle,showBackButton: false,),
+              buildAppBar(context,title: AppString.productTitle,showBackButton: false,horizontal: 0),
               const SizedBox(height: KVerticalPadding,),
               searchTextFiled(),
               const SizedBox(height: KVerticalPadding,),

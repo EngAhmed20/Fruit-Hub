@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruits_app/core/utilis/app_colors.dart';
+import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:fruits_app/features/cart/presentation/manager/cubit/cart_cubit.dart';
@@ -102,7 +103,7 @@ class CartItem extends StatelessWidget {
                           }),
                       Spacer(),
                       Text(
-                        '${cartItemEntity.calculateTotalPrice()}',
+                        '${cartItemEntity.calculateTotalPrice()} ${AppString.currency}',
                         style: textStyle.Bold16.copyWith(
                             color: AppColors.secondartColor),
                       )

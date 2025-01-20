@@ -55,6 +55,7 @@ class AppString{
   static const String total='المجموع';
   static const String pay='ادفع';
   static const String payment='الدفع';
+  static const String shipping='الشحن';
   static const String currency='جنيه';
   static const String paymentMethod='طريقة الدفع';
   static const String payPal='باي بال';
@@ -62,5 +63,21 @@ class AppString{
   static const String getDataError='حدثت مشكلة اثناء جلب المعلومات الرجاء المحاولة مرة اخري';
   static const String addToCartSuccess='تمت إضافة المنتج إلى السلة';
   static const String removeFromCartSuccess='تمت إزالة المنتج من السلة';
-
+  static const String review='المراجعه';
+  static const String address='العنوان';
+  static const String next='التالي';
+  static const String cashOnDelivery='الدفع عند الاستلام';
+  static const String deliveryFromThePlace='التسليم من المكان';
+  static const String buyNowPayLater='الدفع اونلاين';
+  static const String pleaseSelectPaymentMethod='يرجي تحديد طريقه الدفع';
+  static const String free='مجاني';
+  static const String city='المدينه';
+  static const String floorNumber='رقم الطابق , رقم الشقه';
+  static const String summaryOfReq='ملخص الطلب : ';
+  static const String subTotal='المجموع الفرعي :';
+  static const String deliveryFee='تكلفة التوصيل :';
+  static const String totalPrice=' الإجمالي :';
+  static const String deliveryAddress='عنوان التوصيل';
+  static const String edit='تعديل';
+  static const String payWithPaypal='الدفع باستخدام باي بال';
 }

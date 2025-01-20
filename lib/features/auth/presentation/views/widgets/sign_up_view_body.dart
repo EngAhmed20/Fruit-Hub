@@ -71,10 +71,10 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     }
                   },
                   hint: AppString.password,
-                  sufixpress: (){
+                  suffixPress: (){
                     SignupCubit.get(context).changeVisablity();
                   },
-                  suficon: SignupCubit.get(context).sufIcon),
+                  suffixIcon: SignupCubit.get(context).sufIcon),
               MySizedBox(height: 16),
               TermsAndConditionWidget(onChecked: (value){
                 isTermsAccept=value;

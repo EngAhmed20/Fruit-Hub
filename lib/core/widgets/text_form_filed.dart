@@ -12,10 +12,10 @@ Widget defaultTextForm(
       required String? Function(String?)? validator,
       TextAlign align=TextAlign.start,
       String? hint,
-      IconData? preficon,
-      VoidCallback? sufixpress,
+      IconData? prefIcon,
+      VoidCallback? suffixPress,
       bool ispass = false,
-      IconData? suficon,
+      IconData? suffixIcon,
       void Function(String?)? onSaved,
       bool isCleckable = true,
       bool read_only = false}) =>
@@ -47,8 +47,10 @@ Widget defaultTextForm(
         border:_inputBorder(),
         enabledBorder: _inputBorder(),
         focusedBorder: _inputBorder(),
-        prefixIcon: Icon(preficon),
-        suffixIcon: IconButton(onPressed: sufixpress, icon: Icon(suficon)),
+        prefixIcon: prefIcon != null ? Icon(prefIcon) : null,
+        suffixIcon: suffixIcon != null
+            ? IconButton(onPressed: suffixPress, icon: Icon(suffixIcon))
+            : null,
       ),
       validator: validator,
     );

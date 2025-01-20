@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
-import 'package:fruits_app/core/widgets/custom_button.dart';
 import 'package:fruits_app/core/widgets/custom_divider.dart';
 import 'package:fruits_app/features/cart/presentation/manager/cubit/cart_cubit.dart';
-import 'package:fruits_app/features/cart/presentation/manager/update_item_cubit/update_item_cubit.dart';
 import 'package:fruits_app/features/cart/presentation/views/widgets/cart_items_list.dart';
+import 'package:fruits_app/features/checkout/presentation/views/checkout_view.dart';
 import '../../../../../constant.dart';
 import '../../../../../core/utilis/app_string.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/widgets/custom_snack_bar.dart';
 import 'cart_header.dart';
+import 'custom_cart_button.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -45,7 +45,16 @@ class CartViewBody extends StatelessWidget {
               bottom: MediaQuery.of(context).size.height*.04,
               left: 0,
               right: 0,
-              child: CustomCartButton()),
+              child: CustomCartButton(
+                onPressed:(){
+                  if(cartCubit.cartEntities.cartItems.isNotEmpty){
+
+                Navigator.pushNamed(context,CheckoutView.routeName,arguments: cartCubit.cartEntities.cartItems);}
+                  else{
+                    customSnackBar(msg: AppString.cartEmpty, context: context);
+                  }
+
+              },)),
         ],
       )
     );
@@ -53,19 +62,3 @@ class CartViewBody extends StatelessWidget {
   }
 }
 
-class CustomCartButton extends StatelessWidget {
-  const CustomCartButton({
-    super.key,
-
-  });
-
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<UpdateItemCubit,UpdateItemState>(
-    builder: (context,state){
-      return CustomButton(text: '${AppString.payment}  ${context.read<CartCubit>().cartEntities.calculateTotalPrice()} ${AppString.currency}',textStyle: textStyle.Bold16.copyWith(color: Colors.white), onPressed:(){});
-    },
-    );
-  }
-}

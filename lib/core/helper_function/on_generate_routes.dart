@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
 import 'package:fruits_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:fruits_app/features/best_selling/presentation/views/best_selling_view.dart';
+import 'package:fruits_app/features/cart/domain/entities/cart_item_entity.dart';
+import 'package:fruits_app/features/checkout/presentation/views/checkout_view.dart';
 import 'package:fruits_app/features/home/presentation/views/main_view.dart';
 import 'package:fruits_app/features/splash/presentation/views/splash_view.dart';
 
@@ -37,6 +39,10 @@ Route<dynamic> onGenrateRoute(RouteSettings settings){
      );
     case BestSellingView.routeName:
       return MaterialPageRoute(builder: (_) => BestSellingView());
+    case CheckoutView.routeName:
+      return MaterialPageRoute(builder: (_)=>CheckoutView(
+        cartItems:settings.arguments as List<CartItemEntity>,
+      ));
     // Add more routes here
     default:
       return MaterialPageRoute(builder: (_) => Scaffold());
