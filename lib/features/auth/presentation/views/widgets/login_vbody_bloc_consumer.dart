@@ -21,9 +21,10 @@ class loginViewBodyBlocConsumer extends StatelessWidget {
             return customSnackBar(context: context,msg:state.errorMessage);
           }
           if(state is loginSuccess) {
+            print(state.userEntity.uId);
              customSnackBar(
                 context: context,msg:  AppString.success, iconMsg: Icons.check_circle_outline,
-                iconColor: AppColors.primaryColor);
+                 iconColor:Colors.white);
              Future.delayed(const Duration(seconds: 2),(){
                Navigator.pushReplacementNamed(context, MainView.routeName);
              });

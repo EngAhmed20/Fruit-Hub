@@ -51,16 +51,6 @@ class AddressInputSection extends StatelessWidget {
             const SizedBox(height: 8,),
 
             defaultTextForm(
-              controller:cubit.addressController ,
-              hint: AppString.address,
-              type: TextInputType.streetAddress,
-              validator: (String? value) {
-               return validateAddress(value);
-              },
-            ),
-            const SizedBox(height: 8,),
-
-            defaultTextForm(
               controller:cubit.cityController ,
               hint: AppString.city,
               type: TextInputType.text,
@@ -69,13 +59,22 @@ class AddressInputSection extends StatelessWidget {
               },
             ),
             const SizedBox(height: 8,),
+
+            defaultTextForm(
+              controller:cubit.addressController ,
+              hint: AppString.address,
+              type: TextInputType.streetAddress,
+              validator: (String? value) {
+               return validateAddress(value);
+              },
+            ),
+
+            const SizedBox(height: 8,),
             defaultTextForm(
               controller:cubit.floorNumber ,
               hint: AppString.floorNumber,
-              type: TextInputType.number,
-              validator: (String? value) {
-                return validateFloorNumber(value);
-              },
+              type: TextInputType.text, validator: (String? value) {  },
+
             ),
           ],
         ),

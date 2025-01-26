@@ -1,3 +1,5 @@
+import 'package:fruits_app/core/repos/order_repo/order_reo_impl.dart';
+import 'package:fruits_app/core/repos/order_repo/order_repo.dart';
 import 'package:fruits_app/core/repos/products_repo/products_repo.dart';
 import 'package:fruits_app/core/repos/products_repo/products_repo_impl.dart';
 import 'package:fruits_app/core/services/firebase_Auth_services.dart';
@@ -9,12 +11,18 @@ import 'database_service.dart';
 import 'firestore_service.dart';
 
 final getIt = GetIt.instance;
+
 class ServicesLoacator {
   void init() {
     getIt.registerSingleton<FirebaseAuthServices>(FirebaseAuthServices());
+
     getIt.registerSingleton<DatabaseService>(FirestoreService());
-    getIt.registerSingleton<AuthRepo>(
-        AuthRepoImpl(firebaseAuthServices: getIt<FirebaseAuthServices>(), databaseService:getIt<DatabaseService>()));
-    getIt.registerSingleton<ProductsRepo>(ProductsRepoImpl(getIt<DatabaseService>()));
+    getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
+        firebaseAuthServices: getIt<FirebaseAuthServices>(),
+        databaseService: getIt<DatabaseService>()));
+    getIt.registerSingleton<ProductsRepo>(
+        ProductsRepoImpl(getIt<DatabaseService>()));
+    getIt.registerSingleton<OrderRepo>(OrderRepoImpl(getIt.get<DatabaseService>()));
+
   }
 }

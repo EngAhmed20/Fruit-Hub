@@ -9,10 +9,10 @@ class UpdateItemCubit extends Cubit<UpdateItemState> {
   UpdateItemCubit() : super(UpdateItemInitial());
   void updateCartItemCount(CartItemEntity cartItem,{required bool increment}){
     if(increment==true){
-      cartItem.increaseCount();
+      cartItem.increaseQuantity();
     }
     else{
-      cartItem.decreaseCount();
+      cartItem.decreaseQuantity();
     }
     emit(CartItemUpdated(cartItem));
   }

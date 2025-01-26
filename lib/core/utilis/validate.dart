@@ -73,7 +73,7 @@ String? validateAddress(String? value) {
 // Validate city in Arabic
 String? validateCity(String? value) {
   if (value == null || value.isEmpty) {
-    return 'المدينة مطلوبة';
+    return 'المحافظة مطلوبة';
   }
   return null;
 }
@@ -81,13 +81,9 @@ String? validateCity(String? value) {
 // Validate floor number (address section)
 String? validateFloorNumber(String? value) {
   if (value == null || value.isEmpty) {
-    return 'رقم الطابق مطلوب';
+    return 'تفاصيل الشقة او العمارة مطلوب';
   }
   // Check if it's a valid number (optional)
-  final floorNumberRegex = RegExp(r'^[0-9]+$');
-  if (!floorNumberRegex.hasMatch(value)) {
-    return 'رقم الطابق يجب أن يكون رقمًا';
-  }
   return null;
 }
 String? validatePhone(String? value) {

@@ -15,7 +15,7 @@ class UserModel extends UserEntity{
     return UserModel(
       email: json['email']?? '',
       name: json['name']?? '',
-      uId: json['uid']?? '',
+      uId: json['uId']?? '',
     );
   }
   factory UserModel.fromEntity(UserEntity entity){

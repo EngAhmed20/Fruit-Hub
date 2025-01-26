@@ -1,0 +1,3 @@
+getCurrency(){
+  return 'USD';
+}

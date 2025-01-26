@@ -88,7 +88,7 @@ class CartItem extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: Text(
-                          '${cartItemEntity.count}',
+                          '${cartItemEntity.quantity}',
                           style: textStyle.Bold16,
                         ),
                       ),

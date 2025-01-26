@@ -21,7 +21,8 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
           customSnackBar(context: context, msg:state.message);
         }
          if(state is SignupSuccess){
-           customSnackBar(context: context,msg:  AppString.creatAccSuccess,iconMsg: Icons.check_circle_outline,iconColor: AppColors.primaryColor);
+           print(state.userEntity.uId);
+           customSnackBar(context: context,msg:  AppString.creatAccSuccess,iconMsg: Icons.check_circle_outline,iconColor:Colors.white);
            Navigator.pop(context);
            // Navigate to home page
            //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));

@@ -71,8 +71,8 @@ class AppString{
   static const String buyNowPayLater='الدفع اونلاين';
   static const String pleaseSelectPaymentMethod='يرجي تحديد طريقه الدفع';
   static const String free='مجاني';
-  static const String city='المدينه';
-  static const String floorNumber='رقم الطابق , رقم الشقه';
+  static const String city='المحافظة';
+  static const String floorNumber='تفاصيل اضافيه كتفاصيل الشقة او العمارة';
   static const String summaryOfReq='ملخص الطلب : ';
   static const String subTotal='المجموع الفرعي :';
   static const String deliveryFee='تكلفة التوصيل :';
@@ -80,4 +80,7 @@ class AppString{
   static const String deliveryAddress='عنوان التوصيل';
   static const String edit='تعديل';
   static const String payWithPaypal='الدفع باستخدام باي بال';
+  static const String productOrderedSuccessfully='تم طلب المنتج بنجاح';
+  static const String productOrderedFailure='فشل في طلب المنتج. حاول مرة أخرى';
+
 }

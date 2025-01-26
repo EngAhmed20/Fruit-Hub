@@ -49,7 +49,7 @@ class CartViewBody extends StatelessWidget {
                 onPressed:(){
                   if(cartCubit.cartEntities.cartItems.isNotEmpty){
 
-                Navigator.pushNamed(context,CheckoutView.routeName,arguments: cartCubit.cartEntities.cartItems);}
+                Navigator.pushNamed(context,CheckoutView.routeName,arguments: cartCubit.cartEntities);}
                   else{
                     customSnackBar(msg: AppString.cartEmpty, context: context);
                   }

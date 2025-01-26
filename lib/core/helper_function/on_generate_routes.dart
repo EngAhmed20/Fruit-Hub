@@ -7,6 +7,7 @@ import 'package:fruits_app/features/checkout/presentation/views/checkout_view.da
 import 'package:fruits_app/features/home/presentation/views/main_view.dart';
 import 'package:fruits_app/features/splash/presentation/views/splash_view.dart';
 
+import '../../features/cart/domain/entities/cart_entities.dart';
 import '../../features/on_boarding/presentaion/views/on_boarding_view.dart';
 
 Route<dynamic> onGenrateRoute(RouteSettings settings){
@@ -41,7 +42,7 @@ Route<dynamic> onGenrateRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (_) => BestSellingView());
     case CheckoutView.routeName:
       return MaterialPageRoute(builder: (_)=>CheckoutView(
-        cartItems:settings.arguments as List<CartItemEntity>,
+        cartItems:settings.arguments as CartEntities,
       ));
     // Add more routes here
     default:

@@ -14,11 +14,11 @@ class ShippingSection extends StatelessWidget {
       padding: const EdgeInsets.only(top: 32,bottom: 100),
       child: Column(
         children: [
-           ShippingItem(title: AppString.cashOnDelivery,description: AppString.deliveryFromThePlace,price: '40 ${AppString.currency}',isSelected: cubit.selectedShippingSection==1,onTap: (){
+           ShippingItem(title: AppString.cashOnDelivery,description: AppString.deliveryFromThePlace,price: '${cubit.cashOnDeliveryPrice} ${AppString.currency}',isSelected: cubit.selectedShippingSection==1,onTap: (){
          cubit.changeSelectedShippingSection(1);
          },),
           const SizedBox(height: 8,),
-           ShippingItem(title: AppString.buyNowPayLater,description: AppString.pleaseSelectPaymentMethod, price: AppString.free,isSelected: cubit.selectedShippingSection==2,onTap: (){
+           ShippingItem(title: AppString.buyNowPayLater,description: AppString.pleaseSelectPaymentMethod, price: '${cubit.paypalPaymentPrice} ${AppString.currency}',isSelected: cubit.selectedShippingSection==2,onTap: (){
              cubit.changeSelectedShippingSection(2);
            },),
         ],

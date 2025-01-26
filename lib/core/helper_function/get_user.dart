@@ -8,5 +8,6 @@ import 'package:fruits_app/features/auth/domain/entities/user_entity.dart';
 UserEntity getUser(){
   var jsonString=sharedPreferences.getString(KUserData);
   var userEntity=UserModel.fromJson(jsonDecode(jsonString));
+  print(userEntity.name+userEntity.email+userEntity.uId);
   return userEntity;
 }
