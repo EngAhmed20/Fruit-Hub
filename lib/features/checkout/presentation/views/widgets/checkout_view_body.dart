@@ -18,11 +18,14 @@ class CheckoutViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<CheckoutCubit,CheckoutState>(
       listener: (context,state){
-        if (state is AddOrderSuccess) {
+        if (state is AddOrderSuccess||state is PaypalPaymentSuccessState) {
           customSnackBar(context: context, msg: AppString.productOrderedSuccessfully,iconColor: Colors.white,iconMsg: Icons.check_circle_outline);
         }
         else if (state is AddOrderFailureState){
           customSnackBar(context: context, msg:AppString.productOrderedFailure,iconColor: Colors.red,iconMsg: Icons.error_outline);
+        }
+        else if (state is PaypalPaymentFailureState){
+          customSnackBar(context: context, msg: AppString.paymentFailed,iconColor: Colors.red,iconMsg: Icons.error_outline);
         }
 
 

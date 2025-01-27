@@ -80,7 +80,11 @@ class AppString{
   static const String deliveryAddress='عنوان التوصيل';
   static const String edit='تعديل';
   static const String payWithPaypal='الدفع باستخدام باي بال';
+  static const String productOrder='طلب المنتج';
   static const String productOrderedSuccessfully='تم طلب المنتج بنجاح';
   static const String productOrderedFailure='فشل في طلب المنتج. حاول مرة أخرى';
+  static const String orderSuccess='تم ��رجا�� الطلب بنجا��';
+  static const String paymentFailed = 'فشل الدفع. الرجاء المحاولة مرة أخرى';
+
 
 }

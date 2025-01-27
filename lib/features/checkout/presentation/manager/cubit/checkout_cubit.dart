@@ -83,7 +83,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       PaymentSection(),
     ];
   }
-
+//////////////////change page using steps
   void changePageBySteps(int pageIndex, BuildContext context) {
     if (pageController.page == 0 && selectedShippingSection == 0) {
       customSnackBar(
@@ -103,7 +103,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     selectedShippingSection = index;
     emit(ShippingSectionSelected());
   }
-
+///////////////////////////validate address section
   validateAddressSection({bool? navigateByButton, int? pageIndex}) {
     if (formKey.currentState!.validate()) {
       identifyAddressSection();
@@ -115,7 +115,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
 
     }
   }
-
+//navigate after validate
   goToNextSection({bool? navigateByButton, int? pageIndex}) {
     if (navigateByButton == false) {
       pageController.animateToPage(pageIndex!,
@@ -135,9 +135,13 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       validateAddressSection();
       //changeCurrentPageIndex();
       emit(state);
-    }else if(pageController.page==2){
+    }else if(pageController.page==2 && orderEntity.payWithCash==false){
+      ////pay via paypal and add order to database
       payWithPaypal(context);
       //addOrder(orderEntity: orderEntity);
+    }else if(pageController.page==2||orderEntity.payWithCash==true){
+      // add order to database pay with cash
+      addOrder(orderEntity: orderEntity);
     }
 
     else {
@@ -172,7 +176,12 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       case 1:
         return AppString.next;
       case 2:
-        return AppString.payWithPaypal;
+        if(orderEntity.payWithCash==false) {
+          return AppString.payWithPaypal;
+        }
+        else{
+          return AppString.productOrder;
+        }
       default:
         return AppString.next;
     }
@@ -196,12 +205,14 @@ class CheckoutCubit extends Cubit<CheckoutState> {
         orderEntity.cartItems.calculateTotalPrice() + deliveryCost;
     paypalPaymentPrice = orderEntity.cartItems.calculateTotalPrice();
   }
+  //////////////////////////////add order to firestore
   addOrder({required OrderEntity orderEntity})async{
     emit(AddOrderLoadingState());
     var result=await orderRepo.addOrder(orderEntity: orderEntity);
     result.fold((failure)=>emit(AddOrderFailureState(failure.message)), (success)=>emit(AddOrderSuccess()));
 
   }
+  /////////////paypal and add order to firebase
   payWithPaypal(BuildContext context){
     paypalPaymentEntity=PaypalPaymentEntity.fromEntity(orderEntity);
    // emit(PaypalPaymentLoadingState());
@@ -218,18 +229,17 @@ class CheckoutCubit extends Cubit<CheckoutState> {
         note: "Contact us for any questions on your order.",
         onSuccess: (Map params) async {
           print("onSuccess: $params");
-          customSnackBar(context: context, msg: 'sucess');
           Navigator.pop(context);
+          addOrder(orderEntity: orderEntity);
+          emit(PaypalPaymentSuccessState());
 
-          //  await addOrder(orderEntity: orderEntity);
-          //emit(PaypalPaymentSuccessState());
 
         },
         onError: (error) {
           log(error.toString());
           print(error);
           Navigator.pop(context);
-          customSnackBar(context: context, msg:'ERR');
+          emit(PaypalPaymentFailureState(error.toString()));
         },
         onCancel: () {
           print('cancelled:');
@@ -237,5 +247,7 @@ class CheckoutCubit extends Cubit<CheckoutState> {
       ),
     ));
   }
+  /////////////////////////////paymob
+
 
 }

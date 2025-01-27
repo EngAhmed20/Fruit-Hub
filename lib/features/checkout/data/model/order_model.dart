@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:fruits_app/constant.dart';
 import 'package:fruits_app/features/checkout/data/model/order_product_model.dart';
@@ -20,7 +19,7 @@ class OrderModel{
     shippingAddressModel: ShippingAddressModel.fromEntity(entity.addressEntity),
     orderProductModel: entity.cartItems.cartItems.map((e)=>OrderProductModel.fromEntity(e)).toList(),
     uId: entity.uID,
-    paymentMethod: entity.payWithCash==true?'Cash':'Paypal',
+    paymentMethod: entity.payWithCash==true?cash:paypal,
 
   );
   }

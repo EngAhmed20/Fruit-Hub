@@ -5,3 +5,5 @@ String kisOnBoardingViewSee='isOnBoardingViewSee';
  const KUserData ='';
 const int deliveryCost = 50;
 double exchangeRate=0;
+const String paypal='Paypal';
+const String cash='Cash';
