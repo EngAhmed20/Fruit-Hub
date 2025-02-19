@@ -47,9 +47,7 @@ class AppString{
   static const String search='بحث';
   static const String addToCart='أضف الى السلة';
   static const String remove='��زالة';
-  static const String logout='تسجيل الخروج';
-  static const String about='معلومات عنا';
-  static const String contact='اتصل بنا';
+
   static const String share='شارك';
   static const String cartEmpty='سلة التسوق فارغة';
   static const String total='المجموع';
@@ -85,6 +83,20 @@ class AppString{
   static const String productOrderedFailure='فشل في طلب المنتج. حاول مرة أخرى';
   static const String orderSuccess='تم ��رجا�� الطلب بنجا��';
   static const String paymentFailed = 'فشل الدفع. الرجاء المحاولة مرة أخرى';
+  static const String userInfo = 'بياناتي الشخصية';
+  static const String userSettings = 'تعديل بيانات الحساب';
+  static const String orderState = 'طلباتي';
+  static const String logout = 'تسجيل الخروج';
+  static const String about = 'من نحن';
+  static const String contact = 'تواصل معنا';
+  static const String recipientInformation='بيانات العميل';
+  static const String recipientPhone='رقم الموبايل :';
+  static const String recipientName=' الاسم:';
+  static const String paidWithPaypal='تم الدفع مسبقا';
+  static const String payWithCash='الدفع عن الاستلام';
+  static const String paid= 'تم الدفع';
+  static const String shippingAddress='عنوان التوصيل :';
+  static const String noOrdersYet = 'لم تقم بأي طلب بعد، ابدأ التسوق الآن!';
 
 
 }

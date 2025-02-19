@@ -26,7 +26,7 @@ class ActiveBottomNavItem extends StatelessWidget {
           children: [
             SvgPicture.asset(activeImg,width:40,),
             const SizedBox(width: 4,),
-            Text(text,style: textStyle.semiBold16.copyWith(color:AppColors.primaryColor),),
+            Expanded(child: Text(text,style: textStyle.semiBold16.copyWith(color:AppColors.primaryColor),)),
           ],
         ),
       ),

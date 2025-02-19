@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/features/cart/presentation/manager/cubit/cart_cubit.dart';
 import 'package:fruits_app/features/cart/presentation/views/cart_view.dart';
+import 'package:fruits_app/features/profile/presentation/views/profile_view.dart';
 
 import '../../../../../core/widgets/custom_snack_bar.dart';
 import '../products_view.dart';
@@ -30,6 +31,7 @@ class MainViewBody extends StatelessWidget {
             HomeView(),
             ProductsView(),
             CartView(),
+            ProfileView(),
           ],
         )
 

@@ -6,10 +6,12 @@ class OrderProductModel{
   final String imgUrl;
   final String code;
   final double price;
+  final int quantity;
 
-  OrderProductModel({required this.name, required this.imgUrl, required this.code, required this.price});
+  OrderProductModel( {required this.quantity,required this.name, required this.imgUrl, required this.code, required this.price});
   factory OrderProductModel.fromEntity(CartItemEntity entity){
     return OrderProductModel(
+      quantity: entity.quantity,
       name: entity.productEntity.name,
       imgUrl: entity.productEntity.imageUrl??'',
       code: entity.productEntity.code,
@@ -22,6 +24,7 @@ class OrderProductModel{
     'name':name,
     'imgUrl':imgUrl,
     'code':code,
-    'price':price
+    'price':price,
+    'quantity':quantity,
   };
 }

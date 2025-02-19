@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
 import 'package:fruits_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:fruits_app/features/best_selling/presentation/views/best_selling_view.dart';
-import 'package:fruits_app/features/cart/domain/entities/cart_item_entity.dart';
 import 'package:fruits_app/features/checkout/presentation/views/checkout_view.dart';
 import 'package:fruits_app/features/home/presentation/views/main_view.dart';
 import 'package:fruits_app/features/splash/presentation/views/splash_view.dart';
 
 import '../../features/cart/domain/entities/cart_entities.dart';
 import '../../features/on_boarding/presentaion/views/on_boarding_view.dart';
+import '../../features/profile/presentation/views/track_your_order_view.dart';
 
 Route<dynamic> onGenrateRoute(RouteSettings settings){
   switch(settings.name){
@@ -44,7 +44,8 @@ Route<dynamic> onGenrateRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (_)=>CheckoutView(
         cartItems:settings.arguments as CartEntities,
       ));
-    // Add more routes here
+    case TrackYourOrderView.routeName:
+      return MaterialPageRoute(builder: (_)=>TrackYourOrderView());// Add more routes here
     default:
       return MaterialPageRoute(builder: (_) => Scaffold());
 

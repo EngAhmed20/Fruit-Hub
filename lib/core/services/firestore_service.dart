@@ -1,7 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fruits_app/features/auth/data/models/user_model.dart';
-import 'package:fruits_app/features/auth/domain/entities/user_entity.dart';
-
 import 'database_service.dart';
 
 class FirestoreService implements DatabaseService{
@@ -34,9 +31,13 @@ class FirestoreService implements DatabaseService{
         var limit=query['limit'];
         data=data.limit(limit);
       }
+      var result=await data.get();
+      return result.docs.map((doc)=> doc.data()).toList();
     }
     var result=await data.get();
     return result.docs.map((e)=> e.data()).toList();
+
+
 
   }
 

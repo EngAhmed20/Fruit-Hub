@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:fruits_app/features/checkout/domain/entities/shipping_address_entity.dart';
 
 class ShippingAddressModel {
@@ -37,6 +36,24 @@ toJson(){
     'addressDetails':addressDetails
   };
 }
+  factory ShippingAddressModel.fromJson(Map<String, dynamic> json) => ShippingAddressModel(
+    name: json['name'],
+    email: json['email'],
+    address: json['address'],
+    city: json['city'],
+    phone: json['phone'],
+    addressDetails: json['addressDetails']?? '',
+  );
+  ShippingAddressEntity toEntity()=>ShippingAddressEntity(
+    name: name,
+    email: email,
+    address: address,
+    city: city,
+    phone: phone,
+    addressDetails: addressDetails,
+  );
+
+
   String shippingAddressDetails(){
     if(addressDetails!.isNotEmpty){
       return '${addressDetails} , ${address} , ${city}';

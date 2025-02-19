@@ -6,7 +6,6 @@ import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/features/cart/presentation/manager/cubit/cart_cubit.dart';
 
-import '../../generated/assets.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.productEntity});
@@ -29,7 +28,7 @@ class FruitItem extends StatelessWidget {
             children: [
               const SizedBox(height:20,),
 
-              Image.network(productEntity.imageUrl!),
+              Expanded(child: Image.network(productEntity.imageUrl!,)),
               ListTile(
                 title: Text(productEntity.name,style: textStyle.semiBold16,),
                 contentPadding: EdgeInsets.symmetric(horizontal:10 ),
