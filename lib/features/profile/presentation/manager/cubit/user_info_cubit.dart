@@ -9,6 +9,7 @@ import 'package:meta/meta.dart';
 
 part 'user_info_state.dart';
 enum PasswordFieldType { current, newPass, confirm }
+enum AutoValidateModeType{allForm,name}
 class UserInfoCubit extends Cubit<UserInfoState> {
   UserInfoCubit(this.authRepo) : super(UserInfoInitial()) {
     onInit();
@@ -24,6 +25,9 @@ class UserInfoCubit extends Cubit<UserInfoState> {
 
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  AutovalidateMode nameAutoValidateMode = AutovalidateMode.disabled;
+
+
 
   onInit() {
     nameController = TextEditingController();
@@ -34,7 +38,6 @@ class UserInfoCubit extends Cubit<UserInfoState> {
     nameController.text = getUser().name;
     emailController.text = getUser().email;
     formKey=GlobalKey<FormState>();
-    autovalidateMode=AutovalidateMode.always;
     nameKey=GlobalKey<FormState>();
   }
   bool isHideCurrentPass=true;
@@ -72,5 +75,17 @@ class UserInfoCubit extends Cubit<UserInfoState> {
   result.fold((failure)=>emit(UpdateUserInfoError(error: failure.message)),(result){
     onInit();
     emit(UpdateUserInfoLoaded());});
+  }
+  changeAutoValidateMode(AutoValidateModeType type){
+    switch(type){
+      case AutoValidateModeType.allForm:
+        autovalidateMode=AutovalidateMode.always;
+        break;
+      case AutoValidateModeType.name:
+        nameAutoValidateMode=AutovalidateMode.always;
+        break;
+    }
+
+    emit(ChangeAutoValidateMode());
   }
 }

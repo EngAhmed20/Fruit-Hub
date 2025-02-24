@@ -18,3 +18,5 @@ class UpdateUserInfoError extends UserInfoState {
 }
 
 class ChangePassVisablity extends UserInfoState {}
+
+class ChangeAutoValidateMode extends UserInfoState {}

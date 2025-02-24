@@ -36,7 +36,7 @@ class UserInfoViewBody extends StatelessWidget {
                   ),
                   Form(
                     key: cubit.nameKey,
-                    autovalidateMode: cubit.autovalidateMode,
+                    autovalidateMode: cubit.nameAutoValidateMode,
                     child: defaultTextForm(
                         controller: cubit.nameController,
                         validator: (String? value) {
@@ -131,6 +131,12 @@ class UserInfoViewBody extends StatelessWidget {
                               newPassword: cubit.newPasswordController.text,
                             );
                           }
+                          else{
+                            cubit.changeAutoValidateMode(AutoValidateModeType.allForm);
+
+                          }
+                        }else{
+                          cubit.changeAutoValidateMode(AutoValidateModeType.name);
                         }
 
                       }),
