@@ -8,10 +8,12 @@ void customSnackBar({required BuildContext context, required String msg,IconData
       content: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            msg,
-            style: textStyle.semiBold16,
-            textAlign: TextAlign.center,
+          Expanded(
+            child: Text(
+              msg,
+              style: textStyle.semiBold16,
+              textAlign: TextAlign.center,
+            ),
           ),
           const SizedBox(width: 10,),
           Icon(iconMsg??Icons.error_outlined,color: iconColor??Colors.red,size: 25,),

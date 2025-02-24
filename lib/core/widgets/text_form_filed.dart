@@ -34,7 +34,7 @@ Widget defaultTextForm(
       onFieldSubmitted: onSubmit,
       decoration: InputDecoration(
         filled: true,
-        fillColor: Color(0xffdde5e5),
+        fillColor: Color(0xfff4f5f5),
         hintText: hint,
         hintStyle: textStyle.semiBold13.
         copyWith(

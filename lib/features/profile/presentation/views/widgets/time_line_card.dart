@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/features/profile/domain/entities/order_status_entity.dart';
 import 'package:fruits_app/features/profile/presentation/views/widgets/recipient_information_widget.dart';
 
 import '../../../../../constant.dart';
@@ -12,11 +13,12 @@ class TimeLineCard extends StatelessWidget {
   const TimeLineCard({
     super.key,
     required this.steps,
-    required this.currentStep,
+    required this.currentStep, required this.order,
   });
 
   final List<String> steps;
   final int currentStep;
+  final OrderStatusEntity order;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +38,17 @@ class TimeLineCard extends StatelessWidget {
                   const SizedBox(
                     width: 5,
                   ),
-                  Text('500 $currency',
+                  Text('${order.totalPrice} $currency',
                       style: textStyle.Bold16.copyWith(
                         color: AppColors.primaryColor,
-                        /*decoration: orderModel.paymentMethod == paypal
+                        decoration: order.paymentMethod == paypal
                           ? TextDecoration.lineThrough
-                          : null,*/
+                          : null,
                       )),
                 ],
               ),
               OrdersTimeLineListView(steps: steps, currentStep: currentStep),
-              RecipientInformationWidget(orderModel: orders[1],),
+              RecipientInformationWidget(shippingAddressEntity: order.shippingAddressEntity,),
 
             ],
           )

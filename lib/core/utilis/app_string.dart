@@ -3,6 +3,7 @@ class AppString{
   static const String password="كلمة المرور";
   static const String login="تسجيل دخول";
   static const String validateEmail="البريد الإلكتروني مطلوب";
+  static const String validateName="الاسم مطلوب";
   static const String validatePassword="كلمة المرور مطلوبة";
   static const String dontHaveAcc="لا تمتلك حساب؟";
   static const String haveAcc="تمتلك حساب بالفعل؟";
@@ -83,7 +84,7 @@ class AppString{
   static const String productOrderedFailure='فشل في طلب المنتج. حاول مرة أخرى';
   static const String orderSuccess='تم ��رجا�� الطلب بنجا��';
   static const String paymentFailed = 'فشل الدفع. الرجاء المحاولة مرة أخرى';
-  static const String userInfo = 'بياناتي الشخصية';
+  static const String userInfo ='الملف الشخصى';
   static const String userSettings = 'تعديل بيانات الحساب';
   static const String orderState = 'طلباتي';
   static const String logout = 'تسجيل الخروج';
@@ -97,6 +98,30 @@ class AppString{
   static const String paid= 'تم الدفع';
   static const String shippingAddress='عنوان التوصيل :';
   static const String noOrdersYet = 'لم تقم بأي طلب بعد، ابدأ التسوق الآن!';
+  static const String newOrdersStatus='pending';
+  static const String shippedOrderStatus='Shipped';
+  static const String inWayOrderStatus='In The Way';
+  static const String deliveredOrderStatus='Delivered';
+  static const String personalInfo='المعلومات الشخصيه';
+  static const String noAuthUserFound='لم يتم العثور على مستخدم معتمد';
+  static const String updatePassSuccess="تم تحديث كلمة المرور بنجاح";
+  static const String updatePassFailed="فشل في تحديث كلمة المرور";
+  static const String confirmPassword='تأكيد كلمة المرور';
+  static const String weekPassword="كلمة المرور ضعيفة. حاول استخدام كلمة أقوى";
+  static const String requireReLogin="تحتاج إلى تسجيل الدخول مرة أخرى لأسباب أمنية";
+  static const String noAuthUserFoundException="لم يتم العثور على مستخدم معتمد";
+  static const String changeUserPass="تغيير كلمة المرور";
+  static const String currentPassword="كلمة المرور الحالية";
+  static const String newPassword="كلمة المرور الجديدة";
+  static const String confirmPasswordChange="تأكيد كلمة المرور الجديدة";
+  static const String saveChanges="حفظ التغييرات";
+  static const String currentPassValidate='يلزم ادخال كلمة المرور الحالية';
+  static const String newPassValidate='يرجي ادخال كلمة السر الجديدة';
+  static const String confirmPassValidate='يرجي تأكيد كلمة المرور الجديدة';
+  static const String passNotMatch='كلمتا المرور غير متطابقتين';
+  static const String savedChangesSuccess='تم تحديث البيانات بنجاح';
+
+
 
 
 }

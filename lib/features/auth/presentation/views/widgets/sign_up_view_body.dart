@@ -48,7 +48,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                   controller: nameController,
                   validator: (String? value) {
                     if (value!.isEmpty) {
-                      return AppString.validateEmail;
+                      return AppString.validateName;
                     }
                   },
                   hint: AppString.name),

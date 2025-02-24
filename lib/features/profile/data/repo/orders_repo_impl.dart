@@ -7,23 +7,27 @@ import 'package:fruits_app/features/profile/data/model/order_status_model.dart';
 import 'package:fruits_app/features/profile/domain/entities/order_status_entity.dart';
 import 'package:fruits_app/features/profile/domain/repo/order_status_repo.dart';
 
-class OrdersRepoImpl implements OrdersRepo {
+class OrdersStatusRepoImpl implements OrdersStatusRepo {
   final DatabaseService firestoreService;
 
-  OrdersRepoImpl(this.firestoreService);
+  OrdersStatusRepoImpl(this.firestoreService);
 
   @override
-  Future<Either<Failure, List<OrderStatusEntity>>> getOrdersStatus() async {
+  Future<Either<Failure, List<OrderStatusEntity>>> getOrdersStatus(
+      {required String uId}) async {
     try {
       var data = await firestoreService.getData(
-              path: BackendEndpoint.addOrder,
-              query: {'orderBy': 'date', 'descending': true})
-          as List<Map<String, dynamic>>;
+          path: BackendEndpoint.addOrder,
+          query: {
+            'orderBy': 'date',
+            'descending': true,
+            'filterBy': 'uId',
+            'filterValue': uId
+          }) as List<Map<String, dynamic>>;
       if (data.isNotEmpty) {
         List<OrderStatusEntity> orders = data
             .map((order) => OrderStatusModel.fromJson(order).toEntity())
             .toList();
-        print('succcces track');
         return Right(orders);
       } else {
         return Left(ServerFailure(AppString.noOrdersYet));

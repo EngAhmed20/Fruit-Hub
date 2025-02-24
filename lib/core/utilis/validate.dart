@@ -14,11 +14,17 @@ String? validateEmail(String? value) {
 }
 
 // Validate password (you already have this one)
-String? validatePassword(String? value) {
+String? validateCurrentPassword(String? value) {
   if (value == null || value.isEmpty) {
-    return 'كلمة المرور مطلوبة';
+    return AppString.currentPassValidate;
   }
-  if (value.length < 8) {
+  return null;
+}
+String? validateNewPassword(String? value) {
+  if (value == null || value.isEmpty) {
+    return AppString.newPassValidate;
+  }
+  /*if (value.length < 8) {
     return 'كلمة المرور يجب أن تحتوي على 8 أحرف على الأقل';
   }
   if (!RegExp(r'[A-Z]').hasMatch(value)) {
@@ -32,7 +38,7 @@ String? validatePassword(String? value) {
   }
   if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(value)) {
     return 'كلمة المرور يجب أن تحتوي على رمز خاص واحد على الأقل';
-  }
+  }*/
 
   return null;
 }
@@ -54,10 +60,10 @@ String? validateName(String? value) {
 // Validate confirm password (you already have this one)
 String? validateConfirmPassword(String? value, String? password) {
   if (value == null || value.isEmpty) {
-    return 'تأكيد كلمة المرور مطلوب';
+    return AppString.confirmPassValidate;
   }
   if (value != password) {
-    return 'كلمتا المرور غير متطابقتين';
+    return AppString.passNotMatch;
   }
   return null;
 }

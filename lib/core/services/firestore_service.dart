@@ -21,6 +21,9 @@ class FirestoreService implements DatabaseService{
     }
     Query<Map<String,dynamic>> data= firestore.collection(path);
     if(query!=null){
+      if (query['filterBy'] != null && query['filterValue'] != null) {
+        data = data.where(query['filterBy'], isEqualTo: query['filterValue']);
+      }
       if(query['orderBy']!=null){
         var orderByFiled=query['orderBy'];
         var descending=query['descending'];
@@ -35,6 +38,7 @@ class FirestoreService implements DatabaseService{
       return result.docs.map((doc)=> doc.data()).toList();
     }
     var result=await data.get();
+
     return result.docs.map((e)=> e.data()).toList();
 
 
@@ -46,5 +50,6 @@ class FirestoreService implements DatabaseService{
    var data=await firestore.collection(path).doc(docId).get();
    return data.exists;
   }
+
 
 }

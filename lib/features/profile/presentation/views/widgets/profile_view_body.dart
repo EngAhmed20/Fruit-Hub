@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/services/firebase_Auth_services.dart';
 import 'package:fruits_app/core/utilis/app_colors.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
+import 'package:fruits_app/features/profile/presentation/views/user_info_view.dart';
 
 import '../../../../../core/utilis/app_string.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../auth/presentation/views/login_view.dart';
 import '../track_your_order_view.dart';
 
 class ProfileViewBody extends StatelessWidget {
@@ -23,7 +27,9 @@ class ProfileViewBody extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            ProfileListTitle(title: AppString.userInfo,leadingIcon: Icons.person_outline,onTap: (){}),
+            ProfileListTitle(title: AppString.userInfo,leadingIcon: Icons.person_outline,onTap: (){
+              Navigator.pushNamed(context, UserInfoView.routeName);
+            }),
             const SizedBox(height: 15,),
             ProfileListTitle(title: AppString.orderState,leadingIcon: Icons.shopping_cart_outlined,onTap: (){
               Navigator.pushNamed(context, TrackYourOrderView.routeName);
@@ -33,7 +39,12 @@ class ProfileViewBody extends StatelessWidget {
             const SizedBox(height: 15,),
             ProfileListTitle(title: AppString.contact, leadingIcon: Icons.contact_mail_outlined, onTap: (){}),
             const SizedBox(height: 15,),
-            ProfileListTitle(title: AppString.logout, leadingIcon: Icons.logout, onTap: (){}),
+            ProfileListTitle(title: AppString.logout, leadingIcon: Icons.logout, onTap: ()async{
+              await FirebaseAuthServices().signOut();
+              Navigator.pushReplacementNamed(context,LoginView.routeName);
+
+
+            }),
             
 
 

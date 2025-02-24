@@ -3,15 +3,16 @@ import 'package:fruits_app/features/checkout/data/model/order_model.dart';
 
 import '../../../../../core/utilis/app_string.dart';
 import '../../../../../core/utilis/app_style/app_text_styles.dart';
+import '../../../../checkout/domain/entities/shipping_address_entity.dart';
 
 
 class RecipientInformationWidget extends StatelessWidget {
   const RecipientInformationWidget({
     super.key,
-    required this.orderModel,
+    required this.shippingAddressEntity,
   });
 
-  final OrderModel orderModel;
+  final ShippingAddressEntity shippingAddressEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class RecipientInformationWidget extends StatelessWidget {
                 const SizedBox(
                   width: 5,
                 ),
-                Flexible(child: Text('${orderModel.shippingAddressModel.shippingAddressDetails()}',style: textStyle.semiBold16,)),
+                Flexible(child: Text('${shippingAddressEntity.shippingAddressDetails()}',style: textStyle.semiBold16,)),
               ],
             ),
           ),

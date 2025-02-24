@@ -1,8 +1,11 @@
 import 'dart:developer';
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fruits_app/core/errors/exceptions.dart';
+import 'package:fruits_app/core/errors/failure.dart';
 import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 class FirebaseAuthServices{
@@ -33,6 +36,88 @@ class FirebaseAuthServices{
 
    }
 
+ }
+ /*Future<String> updateUserCredentials({String? newEmail, String? newPassword}) async {
+   try {
+     User? user = FirebaseAuth.instance.currentUser;
+
+
+       //await user?.sendEmailVerification();
+
+
+
+     if (user == null) {
+       throw CustomException(message: "No authenticated user found.");
+     }
+
+     if (newEmail != null && newEmail.isNotEmpty) {
+
+        await user.updateEmail(newEmail);
+
+     }
+
+     if (newPassword != null && newPassword.isNotEmpty) {
+       await user.updatePassword(newPassword);
+     }
+
+     // إرجاع UID الخاص بالمستخدم بعد التحديث
+     return user.uid;
+   } on FirebaseAuthException catch (e) {
+     log('Exception in FirebaseAuthServices.updateUserCredentials: ${e.toString()}');
+
+     if (e.code == 'requires-recent-login') {
+       throw CustomException(
+           message: "You need to reauthenticate before changing your credentials.");
+     }
+
+     throw CustomException(message: "Failed to update credentials.");
+   }
+ }*/
+ Future<Either<Failure, void>>reauthenticateAndUpdatePassword(
+     {required String newPassword,required String currentPassword}) async {
+   User? user = FirebaseAuth.instance.currentUser;
+
+   if (user != null && user.email != null) {
+     try {
+       AuthCredential credential = EmailAuthProvider.credential(
+         email: user.email!,
+         password: currentPassword,
+       );
+
+       await user.reauthenticateWithCredential(credential);
+
+       await user.updatePassword(newPassword);
+       if (kDebugMode) {
+         print(AppString.updatePassSuccess);
+       }
+       return const Right(null);
+     } on FirebaseAuthException catch (e) {
+       if (e.code == 'weak-password') {
+         if (kDebugMode) {
+           print(AppString.weekPassword);
+         }
+         return left(ServerFailure(AppString.weekPassword));
+
+       } else if (e.code == 'requires-recent-login') {
+         if (kDebugMode) {
+           print(AppString.requireReLogin);
+         }
+         return left(ServerFailure(AppString.requireReLogin));
+
+
+       } else {
+         if (kDebugMode) {
+           print("❌ خطأ: ${e.message}");
+         }
+         return left(ServerFailure(e.message ?? AppString.otherException));
+
+       }
+     }
+   } else {
+     print(AppString.noAuthUserFound);
+     return left(ServerFailure(AppString.otherException));
+
+   }
  }
  Future <User> signInWithEmailAndPassword({required String email, required String password}) async{
    try{
@@ -92,4 +177,9 @@ class FirebaseAuthServices{
  bool isUserLoggedIn(){
    return  FirebaseAuth.instance.currentUser!= null;
  }
+ Future<void> signOut(){
+   return FirebaseAuth.instance.signOut();
+
+ }
+
 }

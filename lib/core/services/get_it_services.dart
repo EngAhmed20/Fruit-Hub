@@ -5,6 +5,8 @@ import 'package:fruits_app/core/repos/products_repo/products_repo_impl.dart';
 import 'package:fruits_app/core/services/firebase_Auth_services.dart';
 import 'package:fruits_app/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:fruits_app/features/auth/domain/repo/auth_repo.dart';
+import 'package:fruits_app/features/profile/data/repo/orders_repo_impl.dart';
+import 'package:fruits_app/features/profile/domain/repo/order_status_repo.dart';
 import 'package:get_it/get_it.dart';
 
 import 'database_service.dart';
@@ -23,6 +25,7 @@ class ServicesLoacator {
     getIt.registerSingleton<ProductsRepo>(
         ProductsRepoImpl(getIt<DatabaseService>()));
     getIt.registerSingleton<OrderRepo>(OrderRepoImpl(getIt.get<DatabaseService>()));
+    getIt.registerSingleton<OrdersStatusRepo>(OrdersStatusRepoImpl(getIt.get<DatabaseService>()));
 
   }
 }
