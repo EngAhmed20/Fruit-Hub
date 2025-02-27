@@ -6,6 +6,7 @@ import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 
 import '../../../../../core/cubits/product_cubit/products_cubit.dart';
+import '../../../../../core/utilis/app_colors.dart';
 import '../../../../../generated/assets.dart';
 
 
@@ -24,7 +25,13 @@ class CustomHomeAppBar extends StatelessWidget {
           horizontal: 0,
         ),
         contentPadding:EdgeInsets.zero,
-        leading: Image.asset(Assets.imagesProfilePic,height: 500,),
+        leading:CircleAvatar(
+          radius: 25,
+          backgroundColor: AppColors.lightPrimaryColor,
+          backgroundImage: NetworkImage(
+            cubit.userImage,
+          ),
+        ),
         title: Text(AppString.homeAppBarTitle,style: textStyle.regular16.copyWith(color: Colors.grey),),
         subtitle: Text(cubit.name,style: textStyle.semiBold16,),
         trailing: Container(

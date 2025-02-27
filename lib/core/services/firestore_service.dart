@@ -51,5 +51,11 @@ class FirestoreService implements DatabaseService{
    return data.exists;
   }
 
+  @override
+  Future<void> updateData({required String path, required String docId, required Map<String, dynamic> data}) async {
+    await firestore.collection(path).doc(docId).update(data);
+
+  }
+
 
 }

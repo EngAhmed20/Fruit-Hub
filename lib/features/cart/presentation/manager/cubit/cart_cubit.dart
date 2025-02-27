@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
-  CartCubit() : super(CartInitial());
+  CartCubit() : super(CartInitial()){print('cart created');}
   CartEntities cartEntities=CartEntities([]);
   void addCartItem(ProductEntity product){
     bool isExist=cartEntities.isExist(product);

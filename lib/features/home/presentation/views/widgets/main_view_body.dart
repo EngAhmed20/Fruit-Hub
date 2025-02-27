@@ -15,6 +15,57 @@ class MainViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocListener<CartCubit, CartState>(
+      listener: (context, state) {
+        if (state is CartItemAdded) {
+          customSnackBar(
+            context: context,
+            msg: AppString.addToCartSuccess,
+            iconMsg: Icons.add_shopping_cart_outlined,
+            iconColor: Colors.white,
+          );
+        }
+        if (state is CartItemRemoved) {
+          customSnackBar(
+            context: context,
+            msg: AppString.removeFromCartSuccess,
+            iconMsg: Icons.remove_shopping_cart_outlined,
+            iconColor: Colors.white,
+          );
+        }
+      },
+      child: _getCurrentView(currentViewIndex), // Dynamically build the selected view
+    );
+  }
+
+  Widget _getCurrentView(int index) {
+    switch (index) {
+      case 0:
+        return const HomeView();
+      case 1:
+        return const ProductsView();
+      case 2:
+        return const CartView();
+      case 3:
+        return const ProfileView(); // Created ONLY when selected
+      default:
+        return const HomeView();
+    }
+  }
+}
+
+
+
+
+
+
+/*
+class MainViewBody extends StatelessWidget {
+  const MainViewBody({super.key, required this.currentViewIndex});
+  final int currentViewIndex;
+
+  @override
+  Widget build(BuildContext context) {
     return BlocListener<CartCubit,CartState>(
       listener: (context,state){
         if(state is CartItemAdded){
@@ -38,3 +89,4 @@ class MainViewBody extends StatelessWidget {
     );
   }
 }
+*/

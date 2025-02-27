@@ -4,6 +4,8 @@ import 'package:fruits_app/core/helper_function/get_user.dart';
 import 'package:fruits_app/core/repos/products_repo/products_repo.dart';
 import 'package:meta/meta.dart';
 
+import '../../../constant.dart';
+
 part 'products_state.dart';
 
 class ProductsCubit extends Cubit<ProductsState> {
@@ -11,9 +13,13 @@ class ProductsCubit extends Cubit<ProductsState> {
   final ProductsRepo productsRepo;
   int productCount=0;
   late String name;
+  late String userImage;
+
   getUserName(){
     name=getUser().name;
     emit(GetUserInfoSuccess());
+    userImage=getUser().imageUrl??defaultUserImage;
+
   }
 
   Future<void> getBestSellingProducts() async {

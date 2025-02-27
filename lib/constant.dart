@@ -8,3 +8,4 @@ double exchangeRate=0;
 const String paypal='Paypal';
 const String cash='Cash';
 const String currency='جنيه ';
+String defaultUserImage='https://pekytshuvupspusketqt.supabase.co/storage/v1/object/public/fruits/users/default_profile.png';

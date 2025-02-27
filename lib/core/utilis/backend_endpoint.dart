@@ -4,4 +4,5 @@ class BackendEndpoint{
   static const checkUserExist='users';
   static const getProducts='products';
   static const addOrder='orders';
+  static const usersImage='fruits/users';
 }
