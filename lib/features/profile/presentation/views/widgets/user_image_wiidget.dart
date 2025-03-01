@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/features/profile/presentation/manager/cubit/profile_cubit.dart';
 import 'package:fruits_app/features/profile/presentation/manager/cubit/user_info_cubit.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/utilis/app_colors.dart';
+import '../../../../../core/widgets/custom_snack_bar.dart';
 import '../../../../../core/widgets/loading_animated_widget.dart';
 import '../../../../../generated/assets.dart';
 
@@ -25,7 +27,7 @@ class UserImageWidget extends StatelessWidget {
           CircleAvatar(
             radius: 60,
             backgroundColor: AppColors.secondartColor,
-            child: State is ProfileImageUpdatingLoading?LoadingAnimatedWidget(context): CircleAvatar(
+            child: state is ProfileImageUpdatingLoading?LoadingAnimatedWidget(context): CircleAvatar(
               radius: 50,
               backgroundColor: AppColors.lightPrimaryColor,
               backgroundImage: NetworkImage(
@@ -45,7 +47,13 @@ class UserImageWidget extends StatelessWidget {
                    }, icon: const Icon(Icons.camera_alt_outlined,color: Colors.white),padding: EdgeInsets.all(2),))),
         ],
       );
-    }, listener:(context,state){});
+    }, listener:(context,state){
+      if (state is ProfileImageUpdatingError){
+        customSnackBar(context: context, msg:AppString.otherException);
+
+
+      }
+    });
   }
 }
 Future <File?> pickFile()async{

@@ -52,10 +52,31 @@ class FirestoreService implements DatabaseService{
   }
 
   @override
-  Future<void> updateData({required String path, required String docId, required Map<String, dynamic> data}) async {
-    await firestore.collection(path).doc(docId).update(data);
+  Future<String?> updateData({required String path,  String? docId, required Map<String, dynamic> data,String? fieldName, // اسم الحقل الذي سيتم البحث به
+    dynamic fieldValue,}) async {
+    try{
 
-  }
+
+    if (docId != null) {
+      await firestore.collection(path).doc(docId).update(data);
+      return docId;
+    } else if(fieldName != null&&fieldValue != null) {
+      var documents = await firestore.collection(path).get();
+     for( var doc in documents.docs){
+        if (doc.data()[fieldName] == fieldValue) {
+          firestore.collection(path).doc(doc.id).update(data);
+          print(doc.id);
+          return doc.id;
+        }
+      }
+    }
+    print('err');
+    return null;
+  }catch(e){
+      print(e.toString());
+      return null;
+    }
+    }
 
 
 }

@@ -24,7 +24,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void>UploadProfileImage(File? image)async {
     emit(ProfileImageUpdatingLoading());
-    var result=await imageRepo.uploadAndSaveImage(image: image!, imageName: imageName, docId: userId,);
+    var result=await imageRepo.uploadAndSaveImage(image: image!, imageName: imageName,docId: getUser().uId);
     result.fold((failure)=>emit(ProfileImageUpdatingError()), (url){
      inIt();
       emit(ProfileImageUpdatingLoaded());});

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:fruits_app/core/services/database_service.dart';
+import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/core/utilis/backend_endpoint.dart';
 import 'package:fruits_app/features/auth/domain/repo/auth_repo.dart';
 
@@ -28,11 +29,15 @@ class ImageRepoImpl implements ImageRepo {
   }
 
   @override
-  Future<Either<Failure, void>> updateImageLink({required String path, required String docId, required Map<String, dynamic> data})async {
+  Future<Either<Failure, String>> updateImageLink({required String path,  String? docId, required Map<String, dynamic> data,String? fieldName, // اسم الحقل الذي سيتم البحث به
+    dynamic fieldValue,})async {
    try{
-     await databaseService.updateData(path: path, docId: docId, data: data);
-     return const Right(null);
-
+     String? DocId =await databaseService.updateData(path: path,fieldName:fieldName,fieldValue: fieldValue,docId: docId, data: data);
+     if(DocId!=null){
+       return Right(DocId);
+     }else{
+       return Left(ServerFailure(AppString.otherException));
+     }
    }catch(e){
       return Left(ServerFailure(e.toString()));
 
@@ -40,7 +45,7 @@ class ImageRepoImpl implements ImageRepo {
 
 
   }
-  Future<Either<Failure, void>> uploadAndSaveImage({required File image,required String imageName, required String docId,}) async
+  Future<Either<Failure, void>> uploadAndSaveImage({required File image,required String imageName,  String? docId,String? fieldName,String?fieldValue}) async
   {
     // رفع الصورة والحصول على الرابط
     final uploadResult = await uploadImage(image, imageName);
@@ -55,6 +60,8 @@ class ImageRepoImpl implements ImageRepo {
         final updateResult = await updateImageLink(
           path: BackendEndpoint.addUserData,
           docId: docId,
+          fieldName: fieldName,
+          fieldValue: fieldValue,
           data: {"imageUrl": imageUrl},
         );
 
@@ -63,7 +70,7 @@ class ImageRepoImpl implements ImageRepo {
             print("Failed to update image link: ${failure.message}");
             return Left(failure);
           },
-              (_) async{
+              (docId) async{
             print("Image uploaded and link updated successfully");
             var userEntity = await authRepo.getUserData(uid:docId);
             await authRepo.saveUserData(user: userEntity);
