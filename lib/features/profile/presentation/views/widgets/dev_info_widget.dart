@@ -66,10 +66,7 @@ void _launchEmail(String email) async {
     final Uri emailUri = Uri(
       scheme: 'mailto',
       path: email,
-      queryParameters: {
-        'subject': 'استفسار حول التطبيق',
-        'body': 'مرحبًا، أريد معرفة المزيد عن تطبيق Fruits App.',
-      },
+      queryParameters: {},
     );
 
     if (await launchUrl(emailUri)==true) {

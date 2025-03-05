@@ -5,6 +5,7 @@ class AppString{
   static const String validateEmail="البريد الإلكتروني مطلوب";
   static const String validateName="الاسم مطلوب";
   static const String validatePassword="كلمة المرور مطلوبة";
+  static const String validateMsg="اكتب رسالتك هنا، لا يمكن إرسال نموذج فارغ";
   static const String dontHaveAcc="لا تمتلك حساب؟";
   static const String haveAcc="تمتلك حساب بالفعل؟";
   static const String createAcc="قم بإنشاء حساب";
@@ -25,6 +26,7 @@ class AppString{
   static const emailException="البريد الالكتروني مستخدم بالفعل";
   static const otherException="لقد حدث خطأ ما ,الرجاء المحاولة مرة اخري";
   static const String success="تم تسجيل الدخول بنجاح";
+  static const String sendMsgSuccess='تم ارسال رسالتك بنجاح';
   static const String creatAccSuccess="تم إنشاء حساب جديد بنجاح";
   static const confirmRules="يجب الموافقة علي الشروط والأحكام";
   static const String networkExc="تأكد من اتصالك بالأنترنت";
@@ -130,6 +132,7 @@ class AppString{
   static const String Thk='شكرًا لاختيارك Fruits App، ونتمنى لك تجربة تسوق ممتعة! 🍓';
   static const String dev='تطوير بواسطة : ';
   static const String devName='أحمد محمد';
+  static const String sendYourMsg='إرسل رسالتك';
 
 
 

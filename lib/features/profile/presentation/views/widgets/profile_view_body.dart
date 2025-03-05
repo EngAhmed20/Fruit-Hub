@@ -7,6 +7,7 @@ import 'package:fruits_app/core/utilis/app_colors.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/features/profile/presentation/views/user_info_view.dart';
 import 'package:fruits_app/features/profile/presentation/views/widgets/about_view.dart';
+import 'package:fruits_app/features/profile/presentation/views/widgets/contact_us_view.dart';
 import 'package:fruits_app/features/profile/presentation/views/widgets/user_image_wiidget.dart';
 
 import '../../../../../core/services/get_it_services.dart';
@@ -50,7 +51,10 @@ class ProfileViewBody extends StatelessWidget {
                 Navigator.pushNamed(context, AboutView.routeName);
               }),
               const SizedBox(height: 15,),
-              ProfileListTitle(title: AppString.contact, leadingIcon: Icons.contact_mail_outlined, onTap: (){}),
+              ProfileListTitle(title: AppString.contact, leadingIcon: Icons.contact_mail_outlined, onTap: (){
+                Navigator.pushNamed(context, ContactUsView.routeName);
+
+              }),
               const SizedBox(height: 15,),
               ProfileListTitle(title: AppString.logout, leadingIcon: Icons.logout, onTap: ()async{
                 await FirebaseAuthServices().signOut();

@@ -48,7 +48,7 @@ class AboutView extends StatelessWidget {
              const  SizedBox(height: 20),
               const Divider(thickness: 1),
               const SizedBox(height: 20),
-              BuildDeveloperInfo(), // قسم تعريف المبرمج
+              BuildDeveloperInfo(),
             ],
           ),
         ),
