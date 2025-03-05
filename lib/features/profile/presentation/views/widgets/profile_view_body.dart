@@ -6,6 +6,7 @@ import 'package:fruits_app/core/services/firebase_Auth_services.dart';
 import 'package:fruits_app/core/utilis/app_colors.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/features/profile/presentation/views/user_info_view.dart';
+import 'package:fruits_app/features/profile/presentation/views/widgets/about_view.dart';
 import 'package:fruits_app/features/profile/presentation/views/widgets/user_image_wiidget.dart';
 
 import '../../../../../core/services/get_it_services.dart';
@@ -45,7 +46,9 @@ class ProfileViewBody extends StatelessWidget {
                 Navigator.pushNamed(context, TrackYourOrderView.routeName);
               }),
               const SizedBox(height: 15,),
-              ProfileListTitle(title: AppString.about, leadingIcon: Icons.info_outline, onTap: (){}),
+              ProfileListTitle(title: AppString.about, leadingIcon: Icons.info_outline, onTap: (){
+                Navigator.pushNamed(context, AboutView.routeName);
+              }),
               const SizedBox(height: 15,),
               ProfileListTitle(title: AppString.contact, leadingIcon: Icons.contact_mail_outlined, onTap: (){}),
               const SizedBox(height: 15,),

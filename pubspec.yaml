@@ -38,6 +38,7 @@ dependencies:
   timeline_tile: ^2.0.0
   supabase_flutter: ^2.8.1
   image_picker: ^1.1.2
+  url_launcher: ^6.1.14
 
 
 
@@ -80,6 +81,8 @@ flutter:
     - assets/images/apple-icon.svg
     - assets/images/facebook-icon.svg
     - assets/images/Check.svg
+    - assets/
+    - assets/fonts/
 
 
 

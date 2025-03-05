@@ -18,7 +18,6 @@ class ProfileCubit extends Cubit<ProfileState> {
   late String userImage;
   inIt(){
     userImage=getUser().imageUrl??defaultUserImage;
-    print('hi');
     emit(IdentifyInitSuccess());
   }
 

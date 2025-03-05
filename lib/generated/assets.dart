@@ -18,6 +18,7 @@ class Assets {
   static const String imagesAppleIcon = 'assets/images/apple-icon.svg';
   static const String imagesBackIcon = 'assets/images/back_icon.svg';
   static const String imagesCheck = 'assets/images/Check.svg';
+  static const String imagesDeveloper = 'assets/images/developer.jpg';
   static const String imagesFacebookIcon = 'assets/images/facebook-icon.svg';
   static const String imagesFeaturedItemBackground = 'assets/images/featured_item_background.svg';
   static const String imagesFilter = 'assets/images/filter.svg';
