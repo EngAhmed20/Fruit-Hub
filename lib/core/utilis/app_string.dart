@@ -133,7 +133,13 @@ class AppString{
   static const String dev='تطوير بواسطة : ';
   static const String devName='أحمد محمد';
   static const String sendYourMsg='إرسل رسالتك';
-
+  static const String productDetails='معلومات المنتج';
+  static const String months='شهر';
+  static const String validity='الصلاحيه';
+  static const String percent='100%';
+  static const String organic='اوجانيك';
+  static const String calories='كالوري';
+  static const String numOfGram='100 جرام';
 
 
 

@@ -12,7 +12,7 @@ Widget defaultTextForm(
       required String? Function(String?)? validator,
       TextAlign align=TextAlign.start,
       String? hint,
-      int? maxLines,
+      int? maxLines=1,
       IconData? prefIcon,
       VoidCallback? suffixPress,
       bool ispass = false,

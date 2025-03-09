@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/entities/product_entity.dart';
 import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
 import 'package:fruits_app/features/auth/presentation/views/sign_up_view.dart';
 import 'package:fruits_app/features/best_selling/presentation/views/best_selling_view.dart';
@@ -7,6 +8,7 @@ import 'package:fruits_app/features/home/presentation/views/main_view.dart';
 import 'package:fruits_app/features/profile/presentation/views/user_info_view.dart';
 import 'package:fruits_app/features/profile/presentation/views/widgets/about_view.dart';
 import 'package:fruits_app/features/profile/presentation/views/widgets/contact_us_view.dart';
+import 'package:fruits_app/features/prouct_details/presentation/view/product_details_view.dart';
 import 'package:fruits_app/features/splash/presentation/views/splash_view.dart';
 import '../../features/cart/domain/entities/cart_entities.dart';
 import '../../features/on_boarding/presentaion/views/on_boarding_view.dart';
@@ -53,7 +55,11 @@ Route<dynamic> onGenrateRoute(RouteSettings settings){
     case AboutView.routeName:
       return MaterialPageRoute(builder: (_)=>AboutView());
     case ContactUsView.routeName:
-      return MaterialPageRoute(builder: (_)=>ContactUsView());   // Add more routes here
+      return MaterialPageRoute(builder: (_)=>ContactUsView());
+    case ProductDetailsView.routeName:
+      return MaterialPageRoute(builder: (_)=>ProductDetailsView(
+        product: settings.arguments as ProductEntity,
+      ));// Add more routes here
     default:
       return MaterialPageRoute(builder: (_) => Scaffold());
 
