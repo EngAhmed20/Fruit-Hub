@@ -19,6 +19,7 @@ class Assets {
   static const String imagesBackIcon = 'assets/images/back_icon.svg';
   static const String imagesCalendar = 'assets/images/calendar.svg';
   static const String imagesCalories = 'assets/images/Calories.svg';
+  static const String imagesCancelSearch = 'assets/images/cancel_search.svg';
   static const String imagesCheck = 'assets/images/Check.svg';
   static const String imagesDetailsBackground = 'assets/images/details_background.png';
   static const String imagesDeveloper = 'assets/images/developer.jpg';
@@ -28,6 +29,7 @@ class Assets {
   static const String imagesFilter = 'assets/images/filter.svg';
   static const String imagesGoogleIcon = 'assets/images/google-icon.svg';
   static const String imagesHome = 'assets/images/home.svg';
+  static const String imagesIllustrations = 'assets/images/Illustrations.svg';
   static const String imagesLogo = 'assets/images/logo.svg';
   static const String imagesNotification = 'assets/images/notification.svg';
   static const String imagesOrganic = 'assets/images/organic.svg';

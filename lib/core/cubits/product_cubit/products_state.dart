@@ -14,7 +14,15 @@ class ProductsSuccess extends ProductsState {
   ProductsSuccess(this.products);
 }
 
+
 class ProductsError extends ProductsState {
   final String errorMessage;
   ProductsError(this.errorMessage);
+}
+class SearchState extends ProductsState{}
+class SearchProductLoadingState extends ProductsState{}
+class SearchProductSuccessState extends ProductsState{}
+class SearchProductFailureState extends ProductsState{
+  final String errorMsg;
+  SearchProductFailureState(this.errorMsg);
 }

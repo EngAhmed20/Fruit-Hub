@@ -140,6 +140,8 @@ class AppString{
   static const String organic='اوجانيك';
   static const String calories='كالوري';
   static const String numOfGram='100 جرام';
+  static const String emptySearchHintText='لا يمكننا البحث بدون نص! جرب إدخال كلمة';
+  static const String searchFailureText='لا توجد نتائج بحث';
 
 
 

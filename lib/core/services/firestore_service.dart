@@ -14,7 +14,7 @@ class FirestoreService implements DatabaseService{
   }
 
   @override
-  Future<dynamic> getData({required String path, String? docId,Map<String,dynamic>?query}) async{
+  Future<dynamic> getData({required String path, String? docId,Map<String,dynamic>?query,bool?searchByLetter=false}) async{
     if(docId!=null){
       var data=await firestore.collection(path).doc(docId).get();
       return data.data() as Map<String,dynamic>;
@@ -22,7 +22,13 @@ class FirestoreService implements DatabaseService{
     Query<Map<String,dynamic>> data= firestore.collection(path);
     if(query!=null){
       if (query['filterBy'] != null && query['filterValue'] != null) {
-        data = data.where(query['filterBy'], isEqualTo: query['filterValue']);
+        if(searchByLetter==true){
+          data = data
+              .where(query['filterBy'], isGreaterThanOrEqualTo: query['filterValue'])
+              .where(query['filterBy'], isLessThanOrEqualTo: query['filterValue'] + '\uf8ff');
+        }
+        else
+        {data = data.where(query['filterBy'], isEqualTo: query['filterValue']);}
       }
       if(query['orderBy']!=null){
         var orderByFiled=query['orderBy'];

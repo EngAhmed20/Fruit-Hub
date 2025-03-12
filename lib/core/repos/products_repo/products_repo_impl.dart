@@ -36,4 +36,23 @@ class ProductsRepoImpl extends ProductsRepo{
       return left(ServerFailure(AppString.getDataError));
     }
   }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> searchProducts({required String productName})async {
+    try{
+      var data=await  databaseService.getData(path: BackendEndpoint.getProducts,searchByLetter: true,query: {
+        'filterBy': 'name',
+        'filterValue':productName,
+      })as List<Map<String,dynamic>>;
+      if(data.isNotEmpty){
+        List<ProductEntity>products=data.map((e)=>ProductEntityModel.fromJson(e).toEntity()).toList();
+        print(products.length);
+        return right(products);
+      }else{
+        return Left(ServerFailure(AppString.getDataError));
+      }
+    }catch(e){
+      return Left(ServerFailure(AppString.getDataError));
+    }
+  }
 }
