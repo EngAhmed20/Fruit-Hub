@@ -2,17 +2,17 @@ import 'app_string.dart';
 
 String? validateEmail(String? value) {
   if (value == null || value.isEmpty) {
-    return AppString.validateEmail;
+    return AppString.validateEmail; // Assuming this is your string for "Email is required"
   }
 
-  final emailRegex = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
-  if (!emailRegex.hasMatch(value)) {
-    return 'صيغة البريد الإلكتروني غير صحيحة';
+  // More robust email regex (still not perfect, but better)
+  final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+   if(!emailRegex.hasMatch(value)) {
+    return 'صيغة البريد الإلكتروني غير صحيحة'; // "Invalid email format"
   }
 
-  return null;
+  return null; // Returns null if the email is valid
 }
-
 // Validate password (you already have this one)
 String? validateCurrentPassword(String? value) {
   if (value == null || value.isEmpty) {

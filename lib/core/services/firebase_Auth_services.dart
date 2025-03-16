@@ -8,36 +8,41 @@ import 'package:fruits_app/core/errors/exceptions.dart';
 import 'package:fruits_app/core/errors/failure.dart';
 import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-class FirebaseAuthServices{
- Future <User>createUserWithEmailAndPassword({required String email,required String password})async
- {
-   try {
-     final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-       email: email,
-       password: password,
-     );
-     return credential.user!;
-   } on FirebaseAuthException catch (e) {
-     log('Exception in FirebaseAuthServices.create user with email and password :${e.toString()}');
-     if (e.code == 'network-request-failed') {
-       throw CustomException(message: AppString.networkExc);
-     }
-     if (e.code == 'weak-password') {
-       throw CustomException(message:AppString.passwordException);
-     } else if (e.code == 'email-already-in-use') {
-       throw CustomException(message: AppString.emailException);
-     }else{
-       throw CustomException(message: AppString.otherException);
-     }
-   } catch (e) {
-     log('Exception in FirebaseAuthServices.create user with email and password :${e.toString()}');
+class FirebaseAuthServices {
+  Future <User> createUserWithEmailAndPassword(
+      {required String email, required String password}) async
+  {
+    try {
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return credential.user!;
+    } on FirebaseAuthException catch (e) {
+      log(
+          'Exception in FirebaseAuthServices.create user with email and password :${e
+              .toString()}');
+      if (e.code == 'network-request-failed') {
+        throw CustomException(message: AppString.networkExc);
+      }
+      if (e.code == 'weak-password') {
+        throw CustomException(message: AppString.passwordException);
+      } else if (e.code == 'email-already-in-use') {
+        throw CustomException(message: AppString.emailException);
+      } else {
+        throw CustomException(message: AppString.otherException);
+      }
+    } catch (e) {
+      log(
+          'Exception in FirebaseAuthServices.create user with email and password :${e
+              .toString()}');
 
-     throw CustomException(message: AppString.otherException);
+      throw CustomException(message: AppString.otherException);
+    }
+  }
 
-   }
-
- }
- /*Future<String> updateUserCredentials({String? newEmail, String? newPassword}) async {
+  /*Future<String> updateUserCredentials({String? newEmail, String? newPassword}) async {
    try {
      User? user = FirebaseAuth.instance.currentUser;
 
@@ -73,113 +78,135 @@ class FirebaseAuthServices{
      throw CustomException(message: "Failed to update credentials.");
    }
  }*/
- Future<Either<Failure, void>>reauthenticateAndUpdatePassword(
-     {required String newPassword,required String currentPassword}) async {
-   User? user = FirebaseAuth.instance.currentUser;
+  Future<Either<Failure, void>> reauthenticateAndUpdatePassword(
+      {required String newPassword, required String currentPassword}) async {
+    User? user = FirebaseAuth.instance.currentUser;
 
-   if (user != null && user.email != null) {
-     try {
-       AuthCredential credential = EmailAuthProvider.credential(
-         email: user.email!,
-         password: currentPassword,
-       );
+    if (user != null && user.email != null) {
+      try {
+        AuthCredential credential = EmailAuthProvider.credential(
+          email: user.email!,
+          password: currentPassword,
+        );
 
-       await user.reauthenticateWithCredential(credential);
+        await user.reauthenticateWithCredential(credential);
 
-       await user.updatePassword(newPassword);
-       if (kDebugMode) {
-         print(AppString.updatePassSuccess);
-       }
-       return const Right(null);
-     } on FirebaseAuthException catch (e) {
-       if (e.code == 'weak-password') {
-         if (kDebugMode) {
-           print(AppString.weekPassword);
-         }
-         return left(ServerFailure(AppString.weekPassword));
+        await user.updatePassword(newPassword);
+        if (kDebugMode) {
+          print(AppString.updatePassSuccess);
+        }
+        return const Right(null);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          if (kDebugMode) {
+            print(AppString.weekPassword);
+          }
+          return left(ServerFailure(AppString.weekPassword));
+        } else if (e.code == 'requires-recent-login') {
+          if (kDebugMode) {
+            print(AppString.requireReLogin);
+          }
+          return left(ServerFailure(AppString.requireReLogin));
+        } else {
+          if (kDebugMode) {
+            print("❌ خطأ: ${e.message}");
+          }
+          return left(ServerFailure(e.message ?? AppString.otherException));
+        }
+      }
+    } else {
+      print(AppString.noAuthUserFound);
+      return left(ServerFailure(AppString.otherException));
+    }
+  }
 
-       } else if (e.code == 'requires-recent-login') {
-         if (kDebugMode) {
-           print(AppString.requireReLogin);
-         }
-         return left(ServerFailure(AppString.requireReLogin));
+  Future <User> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email, password: password);
+      return credential.user!;
+    } on FirebaseException catch (e) {
+      log(
+          'Exception in FirebaseAuthServices.sign in with email and password :${e
+              .toString()}and code is ${e.code}');
+      if (e.code == 'network-request-failed') {
+        throw CustomException(message: AppString.networkExc);
+      }
+      else if (e.code == 'user-not-found') {
+        throw CustomException(message: AppString.invalidEmailOrPass);
+      }
+      else if (e.code == 'user-not-found') {
+        throw CustomException(message: AppString.invalidEmailOrPass);
+      }
+      else if (e.code == 'invalid-credential') {
+        throw CustomException(message: AppString.invalidEmailOrPass);
+      }
+      else {
+        throw CustomException(message: AppString.otherException);
+      }
+    } catch (e) {
+      log(
+          'Exception in FirebaseAuthServices.sign in user with email and password :${e
+              .toString()}');
 
+      throw CustomException(message: AppString.otherException);
+    }
+  }
 
-       } else {
-         if (kDebugMode) {
-           print("❌ خطأ: ${e.message}");
-         }
-         return left(ServerFailure(e.message ?? AppString.otherException));
+  Future<User> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-       }
-     }
-   } else {
-     print(AppString.noAuthUserFound);
-     return left(ServerFailure(AppString.otherException));
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser
+        ?.authentication;
 
-   }
- }
- Future <User> signInWithEmailAndPassword({required String email, required String password}) async{
-   try{
-     final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-     return credential.user!;
-   } on FirebaseException catch (e){
-     log('Exception in FirebaseAuthServices.sign in with email and password :${e.toString()}and code is ${e.code}');
-     if(e.code == 'network-request-failed'){
-       throw CustomException(message: AppString.networkExc);
-     }
-     else if(e.code == 'user-not-found'){
-       throw CustomException(message: AppString.invalidEmailOrPass);
-     }
-     else if(e.code == 'user-not-found'){
-       throw CustomException(message: AppString.invalidEmailOrPass);
-     }
-     else if(e.code == 'invalid-credential'){
-       throw CustomException(message: AppString.invalidEmailOrPass);
-     }
-     else{
-       throw CustomException(message: AppString.otherException);
-     }
-   } catch (e) {
-     log('Exception in FirebaseAuthServices.sign in user with email and password :${e.toString()}');
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
 
-     throw CustomException(message: AppString.otherException);
+    // Once signed in, return the UserCredential
+    return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
+  }
 
-   }
- }
- Future<User> signInWithGoogle() async {
-   // Trigger the authentication flow
-   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<User> signInWithFacebook() async {
+    final LoginResult loginResult = await FacebookAuth.instance.login();
 
-   // Obtain the auth details from the request
-   final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final OAuthCredential facebookAuthCredential = FacebookAuthProvider
+        .credential(loginResult.accessToken!.tokenString);
 
-   // Create a new credential
-   final credential = GoogleAuthProvider.credential(
-     accessToken: googleAuth?.accessToken,
-     idToken: googleAuth?.idToken,
-   );
+    // Once signed in, return the UserCredential
+    return (await FirebaseAuth.instance.signInWithCredential(
+        facebookAuthCredential)).user!;
+  }
 
-   // Once signed in, return the UserCredential
-   return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
- }
- Future<User> signInWithFacebook() async {
-   final LoginResult loginResult = await FacebookAuth.instance.login();
+  Future<void> deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
 
-   final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+  bool isUserLoggedIn() {
+    return FirebaseAuth.instance.currentUser != null;
+  }
 
-   // Once signed in, return the UserCredential
-   return (await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential)).user!;
- }
- Future<void>deleteUser()async{
-   await FirebaseAuth.instance.currentUser!.delete();
- }
- bool isUserLoggedIn(){
-   return  FirebaseAuth.instance.currentUser!= null;
- }
- Future<void> signOut(){
-   return FirebaseAuth.instance.signOut();
+  Future<void> signOut() {
+    return FirebaseAuth.instance.signOut();
+  }
 
- }
+  ////////////////////reset pass if forget it
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      if (kDebugMode) {
+        print("تم إرسال رابط إعادة تعيين كلمة المرور إلى: $email");
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print("خطأ أثناء إرسال الإيميل: $e");
+      }
+    }
+  }
 
 }

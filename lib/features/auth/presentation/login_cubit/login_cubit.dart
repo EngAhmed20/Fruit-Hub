@@ -12,11 +12,12 @@ class loginCubit extends Cubit<loginState> {
   loginCubit(this.authRepo) : super(loginInitial());
   static loginCubit get(context)=>BlocProvider.of(context);
   final AuthRepo authRepo;
-  bool isHidePass=false;
-  IconData sufIcon= Icons.visibility_outlined;
+  bool isHidePass=true;
+  IconData sufIcon= Icons.visibility_off_outlined;
+
   void changeVisablity(){
     isHidePass=!isHidePass;
-    sufIcon=isHidePass?Icons.visibility_off_outlined:Icons.visibility_outlined;
+    sufIcon=isHidePass?Icons.visibility_outlined:Icons.visibility_off_outlined;
     emit(changePassVisablity());
 
   }

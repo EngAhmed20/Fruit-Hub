@@ -20,54 +20,57 @@ class ProductDetailsView extends StatelessWidget {
         appBar:
             buildAppBar(context, title: product.name, showNotification: false),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 16,),
-              product_details_image(product: product),
-              const SizedBox(height: 24,),
-              Text(product.name,style: textStyle.Bold16,),
-              const SizedBox(height: 4,),
-              Text.rich(TextSpan(
-                  children: [
-                    TextSpan(text: '${product.price!} ',style: textStyle.Bold13.copyWith(color: AppColors.secondartColor)),
-                    TextSpan(text: AppString.currency,style: textStyle.Bold13.copyWith(color: AppColors.secondartColor)),
-                    TextSpan(text: ' / ',style: textStyle.Bold13.copyWith(color:AppColors.secondartColor)),
-                    TextSpan(text: AppString.Quantity,style: textStyle.Bold13.copyWith(color: AppColors.lightSecondartColor))
-                  ]
-              )),
-              const SizedBox(height: 10,),
-              Row(children: [
-                SvgPicture.asset(Assets.imagesStar),
-                const SizedBox(width: 5,),
-                Text('${product.avgRating??0}'),
-                const SizedBox(width: 9,),
-                Text('(${product.ratingCount})',style: textStyle.Bold13,),
-              ],),
-              const SizedBox(height: 8,),
-              Text(product.description,style: textStyle.regular16,),
-              const SizedBox(height: 16,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(child: product_details_info_card(title: product.expirationMonths!.toString(),subTitle: AppString.validity,img: Assets.imagesCalendar,titleExtention: AppString.months,)),
-                 const SizedBox(width: 8,),
-                  const Expanded(child: product_details_info_card(title: AppString.percent,subTitle: AppString.organic,img: Assets.imagesOrganic)),
-
-              ],),
-              const SizedBox(height: 16,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(child: product_details_info_card(title: product.numOfCalories!.toString(),subTitle: AppString.numOfGram,img: Assets.imagesCalories,titleExtention: AppString.calories,)),
-                  const SizedBox(width: 8,),
-                  Expanded(child: product_details_info_card(title: '(${product.ratingCount})',subTitle: AppString.review,img: Assets.imagesFavourites,titleExtention: product.avgRating.toString(),)),
-
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 16,),
+                product_details_image(product: product),
+                const SizedBox(height: 24,),
+                Text(product.name,style: textStyle.Bold16,),
+                const SizedBox(height: 4,),
+                Text.rich(TextSpan(
+                    children: [
+                      TextSpan(text: '${product.price!} ',style: textStyle.Bold13.copyWith(color: AppColors.secondartColor)),
+                      TextSpan(text: AppString.currency,style: textStyle.Bold13.copyWith(color: AppColors.secondartColor)),
+                      TextSpan(text: ' / ',style: textStyle.Bold13.copyWith(color:AppColors.secondartColor)),
+                      TextSpan(text: AppString.Quantity,style: textStyle.Bold13.copyWith(color: AppColors.lightSecondartColor))
+                    ]
+                )),
+                const SizedBox(height: 10,),
+                Row(children: [
+                  SvgPicture.asset(Assets.imagesStar),
+                  const SizedBox(width: 5,),
+                  Text('${product.avgRating??0}'),
+                  const SizedBox(width: 9,),
+                  Text('(${product.ratingCount})',style: textStyle.Bold13,),
                 ],),
-
-
-            ],
+                const SizedBox(height: 8,),
+                Text(product.description,style: textStyle.regular16,),
+                const SizedBox(height: 16,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(child: product_details_info_card(title: product.expirationMonths!.toString(),subTitle: AppString.validity,img: Assets.imagesCalendar,titleExtention: AppString.months,)),
+                   const SizedBox(width: 8,),
+                    const Expanded(child: product_details_info_card(title: AppString.percent,subTitle: AppString.organic,img: Assets.imagesOrganic)),
+            
+                ],),
+                const SizedBox(height: 16,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(child: product_details_info_card(title: product.numOfCalories!.toString(),subTitle: AppString.numOfGram,img: Assets.imagesCalories,titleExtention: AppString.calories,)),
+                    const SizedBox(width: 8,),
+                    Expanded(child: product_details_info_card(title: '(${product.ratingCount})',subTitle: AppString.review,img: Assets.imagesFavourites,titleExtention: product.avgRating.toString(),)),
+            
+                  ],),
+            const SizedBox(height: 16,),
+            
+              ],
+            ),
           ),
         ));
   }

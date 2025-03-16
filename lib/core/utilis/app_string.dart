@@ -24,6 +24,8 @@ class AppString{
   static const String terms2="الشروط والأحكام الخاصة بنا";
   static const passwordException="كلمة المرور ضعيفة جدا";
   static const emailException="البريد الالكتروني مستخدم بالفعل";
+  static const String emailExist='البريد الالكترني موجود';
+  static const String emailNotExist='هذا البريد غير مسجل لدينا';
   static const otherException="لقد حدث خطأ ما ,الرجاء المحاولة مرة اخري";
   static const String success="تم تسجيل الدخول بنجاح";
   static const String sendMsgSuccess='تم ارسال رسالتك بنجاح';
@@ -142,6 +144,10 @@ class AppString{
   static const String numOfGram='100 جرام';
   static const String emptySearchHintText='لا يمكننا البحث بدون نص! جرب إدخال كلمة';
   static const String searchFailureText='لا توجد نتائج بحث';
+  static const String searchForYourAccountTitle='البحث عن حسابك';
+  static const String searchForAccSubTitle='لا تقلق ، ما عليك سوى كتابة بريك الإكتروني وسنرسل رابط تغير كلمة السر.';
+  static const String sendUrl='أرسل الرابط';
+  static const String sendUrlSuccess='تم إرسال رابط إعادة تعيين كلمة المرور. سوف يتم اعادة توجيهك الي صفحة تسجيل الدخول';
 
 
 

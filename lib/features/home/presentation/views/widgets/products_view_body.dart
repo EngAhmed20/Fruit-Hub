@@ -50,34 +50,48 @@ class ProductsViewBody extends StatelessWidget {
           cubit.isSearch == false
               ? ProductsGridViewBlocBuilder()
               : SliverToBoxAdapter(
-            child: BlocBuilder<ProductsCubit, ProductsState>(
-              builder: (context, state) {
-                if (cubit.searchController.text.isEmpty) {
-                  return Center(child: Text(AppString.emptySearchHintText,style: textStyle.semiBold16,));
-                } if (state is SearchProductLoadingState){
-                  return LoadingAnimatedWidget(context);
-                }
-                if(state is SearchProductFailureState){
-                  return Column(
-                    children: [
-                      SvgPicture.asset(Assets.imagesIllustrations),
-                      const SizedBox(height: 5,),
-                      Text(AppString.searchFailureText,style: textStyle.semiBold16.copyWith(color: const Color(0xff949D9E)),)
-                    ],);
-
-                }
-                return Column(
-                  children: List.generate(cubit.searchedProduct.length, (index) => SizedBox(
-                      height:200,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: FruitItem(productEntity: cubit.searchedProduct[index]),
-                      ))),
-                );
-              },
-            ),
-          )
-
+                  child: BlocBuilder<ProductsCubit, ProductsState>(
+                    builder: (context, state) {
+                      if (cubit.searchController.text.isEmpty) {
+                        return Center(
+                            child: Text(
+                          AppString.emptySearchHintText,
+                          style: textStyle.semiBold16,
+                        ));
+                      }
+                      if (state is SearchProductLoadingState) {
+                        return LoadingAnimatedWidget(context);
+                      }
+                      if (state is SearchProductFailureState) {
+                        return Column(
+                          children: [
+                            SvgPicture.asset(Assets.imagesIllustrations),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              AppString.searchFailureText,
+                              style: textStyle.semiBold16
+                                  .copyWith(color: const Color(0xff949D9E)),
+                            )
+                          ],
+                        );
+                      }
+                      return Column(
+                        children: List.generate(
+                            cubit.searchedProduct.length,
+                            (index) => SizedBox(
+                                height: 200,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 12),
+                                  child: FruitItem(
+                                      productEntity:
+                                          cubit.searchedProduct[index]),
+                                ))),
+                      );
+                    },
+                  ),
+                )
         ],
       ),
     );

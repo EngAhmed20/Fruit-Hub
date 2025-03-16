@@ -10,6 +10,7 @@ import 'package:fruits_app/features/profile/presentation/views/widgets/about_vie
 import 'package:fruits_app/features/profile/presentation/views/widgets/contact_us_view.dart';
 import 'package:fruits_app/features/prouct_details/presentation/view/product_details_view.dart';
 import 'package:fruits_app/features/splash/presentation/views/splash_view.dart';
+import '../../features/auth/presentation/views/forget_pass_view/forget_pass_view.dart';
 import '../../features/cart/domain/entities/cart_entities.dart';
 import '../../features/on_boarding/presentaion/views/on_boarding_view.dart';
 import '../../features/profile/presentation/views/track_your_order_view.dart';
@@ -59,7 +60,11 @@ Route<dynamic> onGenrateRoute(RouteSettings settings){
     case ProductDetailsView.routeName:
       return MaterialPageRoute(builder: (_)=>ProductDetailsView(
         product: settings.arguments as ProductEntity,
-      ));// Add more routes here
+      ));
+    case ForgetPassView.routeName:
+      return MaterialPageRoute(builder: (_)=>ForgetPassView(
+      ));
+      // Add more routes here
     default:
       return MaterialPageRoute(builder: (_) => Scaffold());
 

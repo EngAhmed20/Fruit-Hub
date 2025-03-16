@@ -5,6 +5,7 @@ import 'package:fruits_app/core/utilis/app_string.dart';
 import 'package:fruits_app/core/utilis/app_style/app_text_styles.dart';
 import 'package:fruits_app/core/utilis/sized_box.dart';
 import 'package:fruits_app/features/auth/presentation/login_cubit/login_cubit.dart';
+import 'package:fruits_app/features/auth/presentation/views/forget_pass_view/forget_pass_view.dart';
 import 'package:fruits_app/features/auth/presentation/views/sign_up_view.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../generated/assets.dart';
@@ -69,7 +70,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   alignment: Alignment.bottomLeft,
                   child: InkWell(
                       onTap: () {
-                        print('forget_page');
+                        Navigator.pushNamed(context, ForgetPassView.routeName);
                       },
                       child: Text(
                         AppString.forgetPass,
